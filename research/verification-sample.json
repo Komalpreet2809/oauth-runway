@@ -1,0 +1,172 @@
+{
+  "checkedAt": "2026-11-05",
+  "checker": "independent-verifier-agent",
+  "summary": {
+    "confirmed": 16,
+    "partly": 4,
+    "contradicted": 0,
+    "unverifiable": 0
+  },
+  "results": [
+    {
+      "id": "G1",
+      "claim": "GitHub OAuth Apps can now register multiple callback URLs (up to 10, since ~August 2026).",
+      "verdict": "confirmed",
+      "url": "https://github.blog/changelog/2026-08-14-multiple-redirect-uris-and-token-refresh-for-oauth-apps",
+      "quote": "OAuth apps can now register up to 10 redirect URIs (called “callback URIs” on GitHub)",
+      "note": "Changelog dated 2026-08-14. Creating-an-OAuth-app docs also say 'You can enter up to 10 callback URLs.' The same release added per-URL wildcard matching. It is on by default for apps that had a single callback URL before 2026-08-03, and GitHub recommends turning it off."
+    },
+    {
+      "id": "G2",
+      "claim": "Newly created GitHub OAuth Apps issue user access tokens that expire (after 8 hours) by default.",
+      "verdict": "confirmed",
+      "url": "https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app",
+      "quote": "Expire user access tokens is enabled by default. If your app's authentication code hasn't been updated to support short-lived tokens, uncheck the box until support is added.",
+      "note": "Authorizing-OAuth-apps docs: 'The access token expires after eight hours, and the refresh token expires after six months without use.' The 2026-08-14 changelog says 'Short-lived tokens are enabled by default for all new applications.' The owner can uncheck the setting. Older apps opt in through offline_access or by forcing expiry, and existing tokens stay long-lived."
+    },
+    {
+      "id": "G3",
+      "claim": "OAuth App access restrictions are enabled by default for newly created GitHub organizations, so org owners must approve an OAuth App before it can access org resources.",
+      "verdict": "confirmed",
+      "url": "https://docs.github.com/en/organizations/managing-oauth-access-to-your-organizations-data/about-oauth-app-access-restrictions",
+      "quote": "When you create a new organization, OAuth app access restrictions are enabled by default. Organization owners can disable OAuth app access restrictions at any time.",
+      "note": "Detail: without approval, an OAuth app gets no API access to private org resources and no privileged create/update/delete on public org resources. It can still read public data. Members can ask owners for approval."
+    },
+    {
+      "id": "G4",
+      "claim": "The REST API rate limit for requests made with a user's OAuth token is 5,000 requests/hour, counted per user (not per app), except for apps owned by a GitHub Enterprise Cloud organization.",
+      "verdict": "partly",
+      "url": "https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api",
+      "quote": "...OAuth app that is owned or approved by a GitHub Enterprise Cloud organization have a higher rate limit of 15,000 requests per hour if you are a member",
+      "note": "Correct: 5,000/hr per user, shared across that user's PATs, GitHub App user tokens and OAuth apps. The exception is stated wrong. 15,000/hr applies when the OAuth app is owned OR approved by a GHEC org AND the user is a member of that org. Requests from the higher-limit app also use up the user's shared 5,000 budget."
+    },
+    {
+      "id": "G5",
+      "claim": "A GitHub OAuth App needs no review or approval by GitHub before any GitHub user can authorize it.",
+      "verdict": "confirmed",
+      "url": "https://docs.github.com/en/apps/oauth-apps/using-oauth-apps/authorizing-oauth-apps",
+      "quote": "When authorizing an OAuth app, you should ensure you trust the application, review who it's developed by, and review the kinds of information the application wants to access.",
+      "note": "Inferred, because no GitHub page says 'no review' in so many words. The documented flow ends at 'Click Register application', with no GitHub review step, and the trust check falls on the user. GitHub reviews only Marketplace listings. Org owners can still block org-data access (see G3)."
+    },
+    {
+      "id": "S1",
+      "claim": "Since May 29, 2025, new installs of commercially distributed Slack apps that are not approved for the Slack Marketplace are limited to 1 request/minute and 15 messages per call on conversations.history and conversations.replies.",
+      "verdict": "confirmed",
+      "url": "https://docs.slack.dev/changelog/2025/05/29/rate-limit-changes-for-non-marketplace-apps",
+      "quote": "will be limited to 1 request per minute, unless they are approved for the Slack Marketplace. The maximum and default for the limit parameter has been reduced to 15 objects.",
+      "note": "This covers apps created after 2025-05-29 and new installs of existing unlisted apps (Tier 3 to Tier 1). Internal customer-built apps are exempt, at 50+ req/min and 1,000 objects."
+    },
+    {
+      "id": "S2",
+      "claim": "Slack originally planned to apply that limit to existing installs (Sept 2, 2025, then March 3, 2026) and later dropped or changed that plan.",
+      "verdict": "confirmed",
+      "url": "https://docs.slack.dev/changelog/2025/05/29/rate-limit-changes-for-non-marketplace-apps",
+      "quote": "The new rate limits will not be applied to existing installations of unlisted, distributed applications published outside the Marketplace.",
+      "note": "Wayback copy of the same page from 2025-05-30: 'will be applied to existing installations ... on September 2, 2025.' The legacy https://api.slack.com/changelog/deprecations still says 'on March 3, 2026.' The current canonical docs.slack.dev page says existing installs are not affected. No dated announcement of the reversal was found, because the page was edited in place."
+    },
+    {
+      "id": "S3",
+      "claim": "Activating public distribution for a Slack app (so other workspaces can install it) requires no review by Slack.",
+      "verdict": "confirmed",
+      "url": "https://docs.slack.dev/app-management/distribution",
+      "quote": "Unlike unlisted distributed apps, apps listed in the Slack Marketplace are reviewed against our requirements & guidelines to ensure a quality experience for end users.",
+      "note": "To activate, you complete the on-page checklist and click 'Activate Public Distribution'. Slack does not review this step. Caveats: Slack's API ToS says commercial distribution belongs in the Marketplace, unlisted apps get the S1 rate limits, and workspace admins may require app approval."
+    },
+    {
+      "id": "S4",
+      "claim": "As of ~Nov 2, 2026, Slack requires an app to be installed on a minimum number of active workspaces (10) and/or have a minimum number of monthly users (20) before it can be submitted for Marketplace review.",
+      "verdict": "confirmed",
+      "url": "https://docs.slack.dev/changelog/2026/11/02/slack-marketplace-submission-criteria",
+      "quote": "A submission is considered low-usage when the app: is installed on fewer than 10 active workspaces, and has fewer than 20 monthly active users",
+      "note": "Exact rule: Slack does not review low-usage submissions (fewer than 10 active-workspace installs AND fewer than 20 MAU), and those apps cannot resubmit for 30 days. 20 MAU replaced the old 10 weekly-active-user test. Separately, a 2026-09-01 changelog says submissions have needed at least 10 active-workspace installs since July 2026, kept throughout review."
+    },
+    {
+      "id": "S5",
+      "claim": "Apps not listed in the Slack Marketplace cannot use Slack's search API (assistant.search.context) and/or Slack's MCP server.",
+      "verdict": "partly",
+      "url": "https://docs.slack.dev/ai/slack-mcp-server",
+      "quote": "Only apps published in the Slack Marketplace and internal apps can use MCP at this time; unlisted apps are prohibited from using MCP.",
+      "note": "Correction: the ban covers unlisted DISTRIBUTED apps. Internal (single-workspace) apps are not listed, yet they CAN use both. The Real-time Search API page (https://docs.slack.dev/apis/web-api/real-time-search-api) says: 'The RTS API is available for directory-published apps and internal apps only.' The Slack MCP server also does not support Dynamic Client Registration."
+    },
+    {
+      "id": "M1",
+      "claim": "The Gmail scope gmail.compose is classified as restricted, while gmail.send is sensitive (not restricted).",
+      "verdict": "confirmed",
+      "url": "https://developers.google.com/workspace/gmail/api/auth/scopes",
+      "quote": "Sensitive scopes ... https://www.googleapis.com/auth/gmail.send Send email on your behalf. Restricted scopes ... https://www.googleapis.com/auth/gmail.compose Manage drafts and send emails.",
+      "note": "The quote takes the two rows from the page's 'Sensitive scopes' and 'Restricted scopes' tables. gmail.readonly, gmail.modify, gmail.insert, gmail.metadata and mail.google.com are also restricted."
+    },
+    {
+      "id": "M2",
+      "claim": "For a Google OAuth app in Testing status, refresh tokens expire after 7 days (for scopes beyond basic profile), and the app is limited to 100 test users.",
+      "verdict": "confirmed",
+      "url": "https://developers.google.com/identity/protocols/oauth2",
+      "quote": "publishing status of \"Testing\" is issued a refresh token expiring in 7 days, unless the only OAuth scopes requested are a subset of name, email address, and user profile",
+      "note": "The 7-day rule is for External user type. https://support.google.com/cloud/answer/15549945 says: 'Projects configured with a publishing status of Testing are limited to up to 100 test users listed in the OAuth consent screen.'"
+    },
+    {
+      "id": "M3",
+      "claim": "An unverified production app requesting sensitive/restricted scopes is capped at 100 users, and that cap counts users over the app's lifetime (does not reset).",
+      "verdict": "confirmed",
+      "url": "https://support.google.com/cloud/answer/15549945",
+      "quote": "The user cap applies over the entire lifetime of the project, and it cannot be reset or changed.",
+      "note": "Quota table: '100 new users in total, after the app presents the unverified app screen.' The cap is per Cloud project, and Google 'might adjust' it for specific apps."
+    },
+    {
+      "id": "M4",
+      "claim": "Apps requesting restricted Gmail scopes must pass an annual CASA security assessment; the self-scan option was deprecated; typical Tier 2 cost via an authorized lab is roughly $500-$4,500.",
+      "verdict": "partly",
+      "url": "https://appdefensealliance.dev/casa/tier-2/tier2-overview",
+      "quote": "Warning: The CASA self scanning process is deprecated. For CASA compliance follow instructions provided in your notification.",
+      "note": "Confirmed: self-scan is deprecated, and Google's restricted-scope page requires reassessment 'at least every 12 months', but only for apps that access restricted data from or through a server. Not confirmed: the $500-$4,500 figure. Google and the ADA publish no prices. TAC Security's pages returned 403, and search snippets showed about $540-$1,800 (older) and $675/$855/$5,400 (newer). The range is a rough guess and the top tier can exceed $4,500."
+    },
+    {
+      "id": "M5",
+      "claim": "The domain of an OAuth redirect URI must be listed as an authorized domain, and authorized domains must be ownership-verified (e.g. via Search Console) for apps that need verification. (Implication: a developer can't verify composio.dev.)",
+      "verdict": "confirmed",
+      "url": "https://support.google.com/cloud/answer/15549049",
+      "quote": "If your app needs to go through verification, please go to the Google Search Console to check if your domains are verified.",
+      "note": "The same page says: 'Add your Authorized Domains before you add your redirect or origin URIs.' The composio.dev point is an inference, but a sound one. Search Console verification requires DNS or site control, so only Composio could verify composio.dev for its own project."
+    },
+    {
+      "id": "M6",
+      "claim": "Google updated its Workspace API user data policy in 2026 (reportedly 2026-09-03) to address AI/agent/MCP use, including a ban on using Workspace data to train generalized AI models.",
+      "verdict": "partly",
+      "url": "https://developers.google.com/workspace/workspace-api-user-data-developer-policy",
+      "quote": "For example, granularly require users to confirm the MCP, tool, skill, or other agentic behavior invocation.",
+      "note": "The page says 'Last updated 2026-09-03', but Wayback shows the MCP/agentic rewrite went live around 2026-07-13, and the policy text is unchanged since late July. The AI-training ban is older, in the 2024-12-19 version. Correct claim: MCP/agent language was added mid-2026, and the training ban predates 2026."
+    },
+    {
+      "id": "L1",
+      "claim": "Linear's MCP server (mcp.linear.app) supports OAuth 2.1 with Dynamic Client Registration, per Linear's docs.",
+      "verdict": "confirmed",
+      "url": "https://linear.app/docs/mcp",
+      "quote": "The interactive setup flow uses OAuth 2.1 with dynamic client registration. You can also authenticate directly with a bearer token or Linear API key",
+      "note": "The endpoint is https://mcp.linear.app/mcp over Streamable HTTP, with read-only options also available."
+    },
+    {
+      "id": "L2",
+      "claim": "Linear OAuth refresh tokens rotate and access tokens are short-lived (~24h) since about April 1, 2026.",
+      "verdict": "confirmed",
+      "url": "https://linear.app/developers/oauth-2-0-authentication",
+      "quote": "All OAuth2 applications were migrated to the new refresh token system on April 1, 2026. ... The access token is valid for 24 hours",
+      "note": "Rotation: 'Requests to consume a refresh token and obtain a new one have a 30-minute grace period'. The example response shows expires_in 86399."
+    },
+    {
+      "id": "L3",
+      "claim": "'Third-party application approvals' (workspace admins approving OAuth apps) is a feature available only on paid Linear plans.",
+      "verdict": "confirmed",
+      "url": "https://linear.app/docs/third-party-application-approvals",
+      "quote": "Third-party application approvals are available on any paid plan.",
+      "note": "Enterprise workspace owners can enable it, as can admins on other paid plans, under Settings > Administration > Security."
+    },
+    {
+      "id": "L4",
+      "claim": "Composio's toolkit page for Linear MCP lists its auth scheme as DCR_OAUTH (i.e. Composio performs Dynamic Client Registration).",
+      "verdict": "confirmed",
+      "url": "https://docs.composio.dev/toolkits/linear_mcp",
+      "quote": "**Auth:** DCR_OAUTH - **Composio-managed OAuth available?** No",
+      "note": "From the markdown version (toolkits/linear_mcp.md; slug LINEAR_MCP, version 20261018_00, 78 tools). The label is confirmed. That Composio itself runs DCR is inferred: I found no Composio page defining DCR_OAUTH (docs/authentication/dcr returns 404), though it matches L1."
+    }
+  ]
+}

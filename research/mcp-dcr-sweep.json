@@ -1,0 +1,586 @@
+{
+  "summary": {
+    "checkedAt": "2026-11-05",
+    "probed": 45,
+    "discoveryFound": 43,
+    "dcrSupported": 42,
+    "cimdSupported": 22
+  },
+  "results": [
+    {
+      "name": "Atlassian MCP",
+      "server": "https://mcp.atlassian.com/v1/sse",
+      "discovery": "https://mcp.atlassian.com/.well-known/oauth-authorization-server",
+      "via": "host",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://mcp.atlassian.com/v1/register",
+      "cimd": false,
+      "pkce": [
+        "plain",
+        "S256"
+      ]
+    },
+    {
+      "name": "Linear MCP",
+      "server": "https://mcp.linear.app/mcp",
+      "discovery": "https://mcp.linear.app/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://mcp.linear.app",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://mcp.linear.app/register",
+      "cimd": true,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Notion MCP",
+      "server": "https://mcp.notion.com/mcp",
+      "discovery": "https://mcp.notion.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://mcp.notion.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://mcp.notion.com/register",
+      "cimd": true,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Sentry MCP",
+      "server": "https://mcp.sentry.dev/mcp",
+      "discovery": "https://mcp.sentry.dev/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://mcp.sentry.dev",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://mcp.sentry.dev/oauth/register",
+      "cimd": true,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Stripe MCP",
+      "server": "https://mcp.stripe.com",
+      "discovery": "https://access.stripe.com/.well-known/oauth-authorization-server/mcp",
+      "via": "protected-resource → https://access.stripe.com/mcp",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://access.stripe.com/mcp/oauth2/register",
+      "cimd": false,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Canva MCP",
+      "server": "https://mcp.canva.com/mcp",
+      "discovery": "https://mcp.canva.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://mcp.canva.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://mcp.canva.com/register",
+      "cimd": true,
+      "pkce": [
+        "plain",
+        "S256"
+      ]
+    },
+    {
+      "name": "Vercel MCP",
+      "server": "https://mcp.vercel.com",
+      "discovery": "https://vercel.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://vercel.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://api.vercel.com/login/oauth/register",
+      "cimd": true,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Supabase MCP",
+      "server": "https://mcp.supabase.com/mcp",
+      "discovery": "https://api.supabase.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://api.supabase.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://api.supabase.com/platform/oauth/apps/register",
+      "cimd": false,
+      "pkce": [
+        "S256",
+        "plain"
+      ]
+    },
+    {
+      "name": "Neon MCP",
+      "server": "https://mcp.neon.tech/mcp",
+      "discovery": "https://mcp.neon.tech/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://mcp.neon.tech",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://mcp.neon.tech/api/register",
+      "cimd": true,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "PostHog MCP",
+      "server": "https://mcp.posthog.com/mcp",
+      "discovery": "https://oauth.posthog.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://oauth.posthog.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://oauth.posthog.com/oauth/register/",
+      "cimd": true,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Monday MCP",
+      "server": "https://mcp.monday.com/mcp",
+      "discovery": "https://auth.monday.com/.well-known/oauth-authorization-server/mcp",
+      "via": "protected-resource → https://auth.monday.com/mcp",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://auth.monday.com/oauth_ms/oauth/register",
+      "cimd": true,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "ClickUp MCP",
+      "server": "https://mcp.clickup.com/mcp",
+      "discovery": "https://mcp.clickup.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://mcp.clickup.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://mcp.clickup.com/oauth/register",
+      "cimd": false,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Box MCP",
+      "server": "https://mcp.box.com",
+      "discovery": "https://api.box.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://api.box.com",
+      "found": true,
+      "dcr": false,
+      "registrationEndpoint": null,
+      "cimd": false,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Wix MCP",
+      "server": "https://mcp.wix.com/mcp",
+      "discovery": "https://mcp.wix.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://mcp.wix.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://mcp.wix.com/register",
+      "cimd": false,
+      "pkce": [
+        "plain",
+        "S256"
+      ]
+    },
+    {
+      "name": "Granola MCP",
+      "server": "https://mcp.granola.ai/mcp",
+      "discovery": "https://mcp-auth.granola.ai/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://mcp-auth.granola.ai",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://mcp-auth.granola.ai/oauth2/register",
+      "cimd": true,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Datadog MCP",
+      "server": "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp",
+      "discovery": "https://mcp.datadoghq.com/.well-known/oauth-authorization-server/v1/mcp",
+      "via": "protected-resource → https://mcp.datadoghq.com/v1/mcp",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://app.datadoghq.com/api/v2/oauth2/register",
+      "cimd": false,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Ramp MCP",
+      "server": "https://mcp.ramp.com/mcp",
+      "discovery": "https://mcp.ramp.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://mcp.ramp.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://mcp.ramp.com/register",
+      "cimd": false,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Close MCP",
+      "server": "https://mcp.close.com/mcp",
+      "discovery": "https://api.close.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://api.close.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://api.close.com/oauth2/register/",
+      "cimd": false,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Todoist MCP",
+      "server": "https://ai.todoist.net/mcp",
+      "discovery": "https://todoist.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://todoist.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://todoist.com/oauth/register",
+      "cimd": true,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Railway MCP",
+      "server": "https://mcp.railway.com",
+      "discovery": "https://backboard.railway.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://backboard.railway.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://backboard.railway.com/oauth/register",
+      "cimd": true,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Resend MCP",
+      "server": "https://mcp.resend.com",
+      "discovery": "https://api.resend.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://api.resend.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://api.resend.com/oauth/register",
+      "cimd": true,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Stytch MCP",
+      "server": "https://mcp.stytch.dev/mcp",
+      "discovery": "https://rustic-kilogram-6347.customers.stytch.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://rustic-kilogram-6347.customers.stytch.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://rustic-kilogram-6347.customers.stytch.com/v1/oauth2/register",
+      "cimd": true,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Apify MCP",
+      "server": "https://mcp.apify.com",
+      "discovery": "https://console-backend.apify.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://console-backend.apify.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://console-backend.apify.com/oauth/apps",
+      "cimd": true,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Semrush MCP",
+      "server": "https://mcp.semrush.com/v1/mcp",
+      "found": false
+    },
+    {
+      "name": "Customer.io MCP",
+      "server": "https://mcp.customer.io/mcp",
+      "discovery": "https://mcp.customer.io/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://mcp.customer.io",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://mcp.customer.io/oauth2/register",
+      "cimd": false,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Tavily MCP",
+      "server": "https://mcp.tavily.com/mcp",
+      "discovery": "https://mcp.tavily.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://mcp.tavily.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://mcp.tavily.com/register",
+      "cimd": true,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Mercury MCP",
+      "server": "https://mcp.mercury.com/mcp",
+      "discovery": "https://mcp.mercury.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://mcp.mercury.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://mcp.mercury.com/register",
+      "cimd": false,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Calendly MCP",
+      "server": "https://mcp.calendly.com",
+      "discovery": "https://calendly.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://calendly.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://calendly.com/oauth/register",
+      "cimd": false,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Lucid MCP",
+      "server": "https://mcp.lucid.app/mcp",
+      "discovery": "https://mcp.lucid.app/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://mcp.lucid.app",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://mcp.lucid.app/oauth/register",
+      "cimd": true,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Honeycomb MCP",
+      "server": "https://mcp.honeycomb.io/mcp",
+      "discovery": "https://ui.honeycomb.io/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://ui.honeycomb.io",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://ui.honeycomb.io/oauth/register",
+      "cimd": true,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Otter.ai MCP",
+      "server": "https://mcp.otter.ai/mcp",
+      "discovery": "https://otter.ai/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://otter.ai",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://otter.ai/oauth/register",
+      "cimd": false,
+      "pkce": [
+        "plain",
+        "S256"
+      ]
+    },
+    {
+      "name": "Plain MCP",
+      "server": "https://mcp.plain.com/mcp",
+      "discovery": "https://signin.auth.plain.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://signin.auth.plain.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://signin.auth.plain.com/oauth2/register",
+      "cimd": true,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Amplitude MCP",
+      "server": "https://mcp.amplitude.com/mcp",
+      "discovery": "https://mcp.amplitude.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://mcp.amplitude.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://mcp.amplitude.com/register",
+      "cimd": true,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Vantage MCP",
+      "server": "https://mcp.vantage.sh/mcp",
+      "discovery": "https://mcp.vantage.sh/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://mcp.vantage.sh",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://mcp.vantage.sh/register",
+      "cimd": false,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Netlify MCP",
+      "server": "https://netlify-mcp.netlify.app/mcp",
+      "discovery": "https://netlify-mcp.netlify.app/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://netlify-mcp.netlify.app",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://netlify-mcp.netlify.app/oauth-server/reg",
+      "cimd": false,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Cloudflare MCP",
+      "server": "https://bindings.mcp.cloudflare.com/mcp",
+      "discovery": "https://bindings.mcp.cloudflare.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://bindings.mcp.cloudflare.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://bindings.mcp.cloudflare.com/register",
+      "cimd": false,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Magic Patterns MCP",
+      "server": "https://mcp.magicpatterns.com/mcp",
+      "discovery": "https://oauth.magicpatterns.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://oauth.magicpatterns.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://oauth.magicpatterns.com/oauth2/register",
+      "cimd": true,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Kernel MCP",
+      "server": "https://mcp.onkernel.com/mcp",
+      "discovery": "https://auth.onkernel.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://auth.onkernel.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://auth.onkernel.com/register",
+      "cimd": false,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "QuickNode MCP",
+      "server": "https://mcp.quicknode.com/mcp",
+      "discovery": "https://mcp.quicknode.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://mcp.quicknode.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://mcp.quicknode.com/register",
+      "cimd": false,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Better Stack MCP",
+      "server": "https://mcp.betterstack.com",
+      "discovery": "https://betterstack.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://betterstack.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://betterstack.com/oauth/register",
+      "cimd": false,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Pylon MCP",
+      "server": "https://mcp.usepylon.com",
+      "discovery": "https://o.auth.usepylon.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://o.auth.usepylon.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://o.auth.usepylon.com/oauth2/register",
+      "cimd": true,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "GoCardless MCP",
+      "server": "https://mcp.gocardless.com/mcp",
+      "discovery": "https://mcp.gocardless.com/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://mcp.gocardless.com",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://mcp.gocardless.com/register",
+      "cimd": false,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Parallel Task MCP",
+      "server": "https://task-mcp.parallel.ai/mcp",
+      "discovery": "https://platform.parallel.ai/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://platform.parallel.ai",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://platform.parallel.ai/getKeys/register",
+      "cimd": false,
+      "pkce": [
+        "S256"
+      ]
+    },
+    {
+      "name": "Common Room MCP",
+      "server": "https://mcp.commonroom.io/mcp",
+      "discovery": "https://login.commonroom.io/.well-known/oauth-authorization-server",
+      "via": "protected-resource → https://login.commonroom.io",
+      "found": true,
+      "dcr": true,
+      "registrationEndpoint": "https://login.commonroom.io/oidc/register",
+      "cimd": true,
+      "pkce": [
+        "S256",
+        "plain"
+      ]
+    },
+    {
+      "name": "Trello MCP",
+      "server": "https://mcp.trello.com/mcp",
+      "found": false
+    }
+  ]
+}

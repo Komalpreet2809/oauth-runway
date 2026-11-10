@@ -1,0 +1,2424 @@
+{
+  "source": "https://docs.composio.dev/toolkits/managed-auth",
+  "capturedAt": "2026-11-05",
+  "counts": {
+    "total": 402,
+    "managed": 127,
+    "bringYourOwn": 275,
+    "bringYourOwnMcp": 112
+  },
+  "apps": [
+    {
+      "name": "Adobe Marketing Agent MCP",
+      "slug": "adobe-marketing-agent-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "AdRoll",
+      "slug": "adroll",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Aha!",
+      "slug": "aha",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Ahrefs",
+      "slug": "ahrefs",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Ahrefs MCP",
+      "slug": "ahrefs-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Aircall",
+      "slug": "aircall",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "AirOps MCP",
+      "slug": "airops-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Airtable",
+      "slug": "airtable",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Alpaca",
+      "slug": "alpaca",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Amazon",
+      "slug": "amazon",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Amplitude MCP",
+      "slug": "amplitude-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Apaleo",
+      "slug": "apaleo",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Apify MCP",
+      "slug": "apify-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Asana",
+      "slug": "asana",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Atlassian MCP",
+      "slug": "atlassian-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Attio",
+      "slug": "attio",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Audioscrape MCP",
+      "slug": "audioscrape-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "AWeber",
+      "slug": "aweber",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Azure Monitor Activity Log",
+      "slug": "azure-monitor-activity-log",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "BambooHR",
+      "slug": "bamboohr",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Basecamp",
+      "slug": "basecamp",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Beeminder",
+      "slug": "beeminder",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Better Stack MCP",
+      "slug": "better-stack-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "bexio",
+      "slug": "bexio",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Bitbucket",
+      "slug": "bitbucket",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Bitly",
+      "slug": "bitly",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Bitwarden",
+      "slug": "bitwarden",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Blackbaud",
+      "slug": "blackbaud",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Blackboard",
+      "slug": "blackboard",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Boldsign",
+      "slug": "boldsign",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Borneo",
+      "slug": "borneo",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Box",
+      "slug": "box",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Box MCP",
+      "slug": "box-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Brevo",
+      "slug": "brevo",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Brex",
+      "slug": "brex",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Buffer",
+      "slug": "buffer",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Cal",
+      "slug": "cal",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Calendly",
+      "slug": "calendly",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Calendly MCP",
+      "slug": "calendly-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Candid MCP",
+      "slug": "candid-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Canva",
+      "slug": "canva",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Canva MCP",
+      "slug": "canva-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Canvas",
+      "slug": "canvas",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Capsule CRM",
+      "slug": "capsule-crm",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Carbon Voice MCP",
+      "slug": "carbon-voice-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Cashfree MCP",
+      "slug": "cashfree-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Circleback MCP",
+      "slug": "circleback-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Clarify MCP",
+      "slug": "clarify-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Clay MCP",
+      "slug": "clay-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "CleverReach",
+      "slug": "cleverreach",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "ClickFunnels 2.0",
+      "slug": "clickfunnels-2-0",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "ClickHouse MCP",
+      "slug": "clickhouse-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "ClickUp",
+      "slug": "clickup",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "ClickUp MCP",
+      "slug": "clickup-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Clio Manage",
+      "slug": "clio-manage",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Clockify",
+      "slug": "clockify",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Close MCP",
+      "slug": "close-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Cloud 66",
+      "slug": "cloud-66",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Cloudflare MCP",
+      "slug": "cloudflare-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Clover",
+      "slug": "clover",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Clueso MCP",
+      "slug": "clueso-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Coinbase Agents MCP",
+      "slug": "coinbase-agents-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Coinbase Wallet MCP",
+      "slug": "coinbase-wallet-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Commerce Layer",
+      "slug": "commerce-layer",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Common Room MCP",
+      "slug": "common-room-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Confluence",
+      "slug": "confluence",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Consensus MCP",
+      "slug": "consensus-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Constant Contact",
+      "slug": "constant-contact",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Contacts+",
+      "slug": "contactsplus",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Contentful",
+      "slug": "contentful",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Contentsquare MCP",
+      "slug": "contentsquare-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Coupa",
+      "slug": "coupa",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Cradl AI",
+      "slug": "cradl-ai",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Craft MCP",
+      "slug": "craft-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Crowdin",
+      "slug": "crowdin",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Customer.io MCP",
+      "slug": "customer-io-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "D2L Brightspace",
+      "slug": "d2l-brightspace",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Dart",
+      "slug": "dart",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Databricks",
+      "slug": "databricks",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Datadog",
+      "slug": "datadog",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Datadog MCP",
+      "slug": "datadog-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Daytona",
+      "slug": "daytona",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "dbt Cloud",
+      "slug": "dbt-cloud",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Deel",
+      "slug": "deel",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "DeepL MCP",
+      "slug": "deepl-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Deputy",
+      "slug": "deputy",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Descript MCP",
+      "slug": "descript-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "DevCycle",
+      "slug": "devcycle",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Dialpad",
+      "slug": "dialpad",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "DigitalOcean",
+      "slug": "digitalocean",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Discord",
+      "slug": "discord",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Discord Bot",
+      "slug": "discord-bot",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Disqus",
+      "slug": "disqus",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "DocuSign",
+      "slug": "docusign",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Dribbble",
+      "slug": "dribbble",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Dropbox",
+      "slug": "dropbox",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Dropbox Sign",
+      "slug": "dropbox-sign",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Dub",
+      "slug": "dub",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Dynamics 365",
+      "slug": "dynamics-365",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Dynatrace",
+      "slug": "dynatrace",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "eBay",
+      "slug": "ebay",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Egnyte",
+      "slug": "egnyte",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Epic Games",
+      "slug": "epic-games",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Era Context MCP",
+      "slug": "era-context-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Eraser MCP",
+      "slug": "eraser-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Eventbrite",
+      "slug": "eventbrite",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Excel",
+      "slug": "excel",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Exist",
+      "slug": "exist",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Facebook",
+      "slug": "facebook",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Fathom",
+      "slug": "fathom",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Fellow.ai MCP",
+      "slug": "fellow-ai-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Figma",
+      "slug": "figma",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Financial Datasets AI MCP",
+      "slug": "financial-datasets-ai-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Follow Up Boss",
+      "slug": "follow-up-boss",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Frame.io V4",
+      "slug": "frame-io-v4",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Freeagent",
+      "slug": "freeagent",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "freee",
+      "slug": "freee",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "FreshBooks",
+      "slug": "freshbooks",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Freshsales",
+      "slug": "freshsales",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Front",
+      "slug": "front",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "FuseAI MCP",
+      "slug": "fuseai-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Gagelist",
+      "slug": "gagelist",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "GetResponse",
+      "slug": "getresponse",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "GitHub",
+      "slug": "github",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "GitLab",
+      "slug": "gitlab",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Glen MCP",
+      "slug": "glen-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Glide MCP",
+      "slug": "glide-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Gmail",
+      "slug": "gmail",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "GoCardless MCP",
+      "slug": "gocardless-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Gong",
+      "slug": "gong",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Google Admin",
+      "slug": "google-admin",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Google Ads",
+      "slug": "google-ads",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Google AdSense",
+      "slug": "google-adsense",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Google Analytics",
+      "slug": "google-analytics",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Google BigQuery",
+      "slug": "google-bigquery",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Google Business Profile",
+      "slug": "google-business-profile",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Google Calendar",
+      "slug": "google-calendar",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Google Chat",
+      "slug": "google-chat",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Google Classroom",
+      "slug": "google-classroom",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Google Data Studio",
+      "slug": "google-data-studio",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Google Docs",
+      "slug": "google-docs",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Google Drive",
+      "slug": "google-drive",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Google Maps",
+      "slug": "google-maps",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Google Meet",
+      "slug": "google-meet",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Google Merchant Center",
+      "slug": "google-merchant-center",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Google Photos",
+      "slug": "google-photos",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Google Search Console",
+      "slug": "google-search-console",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Google Sheets",
+      "slug": "google-sheets",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Google Slides",
+      "slug": "google-slides",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Google Super",
+      "slug": "google-super",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Google Tasks",
+      "slug": "google-tasks",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Googlecontacts",
+      "slug": "googlecontacts",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Googleforms",
+      "slug": "googleforms",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Gorgias",
+      "slug": "gorgias",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "GoTo Training",
+      "slug": "goto-training",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Grafana Cloud MCP",
+      "slug": "grafana-cloud-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Granola MCP",
+      "slug": "granola-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Greenhouse",
+      "slug": "greenhouse",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Greptile MCP",
+      "slug": "greptile-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Gumroad",
+      "slug": "gumroad",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Gusto",
+      "slug": "gusto",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "HaloPSA",
+      "slug": "halopsa",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Harvest",
+      "slug": "harvest",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Help Scout",
+      "slug": "help-scout",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Higgsfield MCP",
+      "slug": "higgsfield-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "HighLevel Agency",
+      "slug": "highlevel-agency",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "HighLevel Location",
+      "slug": "highlevel-location",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Honeycomb MCP",
+      "slug": "honeycomb-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "HubSpot",
+      "slug": "hubspot",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Hugging Face",
+      "slug": "hugging-face",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Ignav Flights MCP",
+      "slug": "ignav-flights-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Imply Polaris",
+      "slug": "imply-polaris",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Infisical",
+      "slug": "infisical",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Instagram",
+      "slug": "instagram",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Intercom",
+      "slug": "intercom",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Ironclad",
+      "slug": "ironclad",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Jentic MCP",
+      "slug": "jentic-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Jibble",
+      "slug": "jibble",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Jira",
+      "slug": "jira",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Jobber",
+      "slug": "jobber",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Judge.me",
+      "slug": "judge-me",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Kernel MCP",
+      "slug": "kernel-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Kick",
+      "slug": "kick",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Kintone REST",
+      "slug": "kintone-rest",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Kit",
+      "slug": "kit",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Klaviyo",
+      "slug": "klaviyo",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Kommo",
+      "slug": "kommo",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "LaunchDarkly",
+      "slug": "launchdarkly",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Legal Data Hunter MCP",
+      "slug": "legal-data-hunter-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Lever",
+      "slug": "lever",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Lightspeed Retail X-Series",
+      "slug": "lightspeed-retail-x-series",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "LILT MCP",
+      "slug": "lilt-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Linear",
+      "slug": "linear",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Linear MCP",
+      "slug": "linear-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "LinkedIn",
+      "slug": "linkedin",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Linkedin Ads",
+      "slug": "linkedin-ads",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Linkhut",
+      "slug": "linkhut",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Linode",
+      "slug": "linode",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "LiveChat",
+      "slug": "livechat",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Lodgify",
+      "slug": "lodgify",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Longbridge MCP",
+      "slug": "longbridge-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Lucid MCP",
+      "slug": "lucid-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Magic Patterns MCP",
+      "slug": "magic-patterns-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Mailchimp",
+      "slug": "mailchimp",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "MailUp",
+      "slug": "mailup",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "MarcoPolo MCP",
+      "slug": "marcopolo-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Matterport",
+      "slug": "matterport",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Memelord MCP",
+      "slug": "memelord-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Mercury MCP",
+      "slug": "mercury-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Meta Ads",
+      "slug": "meta-ads",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Microsoft Advertising",
+      "slug": "microsoft-advertising",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Microsoft Bookings",
+      "slug": "microsoft-bookings",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Microsoft Entra ID",
+      "slug": "microsoft-entra-id",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Microsoft OneNote",
+      "slug": "microsoft-onenote",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Microsoft Power Bi",
+      "slug": "microsoft-power-bi",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Microsoft PowerPoint",
+      "slug": "microsoft-powerpoint",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Microsoft Teams",
+      "slug": "microsoft-teams",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Microsoft To Do",
+      "slug": "microsoft-to-do",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Microsoft Word",
+      "slug": "microsoft-word",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Midpage MCP",
+      "slug": "midpage-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Mintlify MCP",
+      "slug": "mintlify-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Miro",
+      "slug": "miro",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Mobbin MCP",
+      "slug": "mobbin-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Modem MCP",
+      "slug": "modem-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Monday",
+      "slug": "monday",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Monday MCP",
+      "slug": "monday-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Money Forward",
+      "slug": "money-forward",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Moneybird",
+      "slug": "moneybird",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "MongoDB",
+      "slug": "mongodb",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "MongoDB MCP",
+      "slug": "mongodb-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "MotherDuck MCP",
+      "slug": "motherduck-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Mural",
+      "slug": "mural",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Neo4J",
+      "slug": "neo4j",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Neon",
+      "slug": "neon",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Neon MCP",
+      "slug": "neon-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Netlify MCP",
+      "slug": "netlify-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Netsuite",
+      "slug": "netsuite",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "NotebookLM",
+      "slug": "notebooklm",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Notion",
+      "slug": "notion",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Notion MCP",
+      "slug": "notion-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Octagon MCP",
+      "slug": "octagon-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Omnisend",
+      "slug": "omnisend",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "OneDrive",
+      "slug": "onedrive",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Otter.ai MCP",
+      "slug": "otter-ai-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Outlook",
+      "slug": "outlook",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "PagerDuty",
+      "slug": "pagerduty",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "PandaDoc MCP",
+      "slug": "pandadoc-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Parallel Task MCP",
+      "slug": "parallel-task-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Parma",
+      "slug": "parma",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Particl MCP",
+      "slug": "particl-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Paypal",
+      "slug": "paypal",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "PayPal Zettle",
+      "slug": "paypal-zettle",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Peec AI MCP",
+      "slug": "peec-ai-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Personio",
+      "slug": "personio",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Photon MCP",
+      "slug": "photon-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Pinecone",
+      "slug": "pinecone",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Pinterest",
+      "slug": "pinterest",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Pinterest Ads",
+      "slug": "pinterest-ads",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Pipedrive",
+      "slug": "pipedrive",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Plaid MCP",
+      "slug": "plaid-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Plain MCP",
+      "slug": "plain-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "PlanetScale",
+      "slug": "planetscale",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Podio",
+      "slug": "podio",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Polar",
+      "slug": "polar",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "PostHog MCP",
+      "slug": "posthog-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Prisma",
+      "slug": "prisma",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Productboard",
+      "slug": "productboard",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "ProductNow MCP",
+      "slug": "productnow-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Pushbullet",
+      "slug": "pushbullet",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Pylon MCP",
+      "slug": "pylon-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "QuickBooks",
+      "slug": "quickbooks",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "QuickNode MCP",
+      "slug": "quicknode-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Quire",
+      "slug": "quire",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Railway",
+      "slug": "railway",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Railway MCP",
+      "slug": "railway-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Ramp",
+      "slug": "ramp",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Ramp MCP",
+      "slug": "ramp-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Razorpay",
+      "slug": "razorpay",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "RD Station Marketing",
+      "slug": "rd-station-marketing",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Read AI MCP",
+      "slug": "read-ai-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Rebrandly",
+      "slug": "rebrandly",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Recraft MCP",
+      "slug": "recraft-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Recruitee",
+      "slug": "recruitee",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Reddit",
+      "slug": "reddit",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Reddit Ads",
+      "slug": "reddit-ads",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Reloadly",
+      "slug": "reloadly",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Resend",
+      "slug": "resend",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Resend MCP",
+      "slug": "resend-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Rillet",
+      "slug": "rillet",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Roam",
+      "slug": "roam",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Sage Intacct",
+      "slug": "sage-intacct",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Salesforce",
+      "slug": "salesforce",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Salesforce Data 360",
+      "slug": "salesforce-data-360",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Salesforce Service Cloud",
+      "slug": "salesforce-service-cloud",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Scheduleonce",
+      "slug": "scheduleonce",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Scorecard MCP",
+      "slug": "scorecard-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "SearchAPI MCP",
+      "slug": "searchapi-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Semrush MCP",
+      "slug": "semrush-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Sendloop",
+      "slug": "sendloop",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "SendPulse",
+      "slug": "sendpulse",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Sentry",
+      "slug": "sentry",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Sentry MCP",
+      "slug": "sentry-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Servicem8",
+      "slug": "servicem8",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "ServiceNow",
+      "slug": "servicenow",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "ServiceTitan",
+      "slug": "servicetitan",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "SharePoint",
+      "slug": "sharepoint",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "SharePoint Graph",
+      "slug": "sharepoint-graph",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Shippo",
+      "slug": "shippo",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Shopify",
+      "slug": "shopify",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Sideshow MCP",
+      "slug": "sideshow-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "SignNow",
+      "slug": "signnow",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Simplescraper MCP",
+      "slug": "simplescraper-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Slack",
+      "slug": "slack",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Slackbot",
+      "slug": "slackbot",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Smartsheet",
+      "slug": "smartsheet",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Smokeball",
+      "slug": "smokeball",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Snapchat",
+      "slug": "snapchat",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Snowflake",
+      "slug": "snowflake",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Snyk",
+      "slug": "snyk",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "SoundCloud",
+      "slug": "soundcloud",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Splice MCP",
+      "slug": "splice-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Splitwise",
+      "slug": "splitwise",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Spotify",
+      "slug": "spotify",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Square",
+      "slug": "square",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Stack Exchange",
+      "slug": "stack-exchange",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Statsig MCP",
+      "slug": "statsig-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Storyblok",
+      "slug": "storyblok",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Strava",
+      "slug": "strava",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Stripe",
+      "slug": "stripe",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Stripe MCP",
+      "slug": "stripe-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Stytch MCP",
+      "slug": "stytch-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Supabase",
+      "slug": "supabase",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Supabase MCP",
+      "slug": "supabase-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Supabase Read MCP",
+      "slug": "supabase-read-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "SurveyMonkey",
+      "slug": "surveymonkey",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Synthesize Bio MCP",
+      "slug": "synthesize-bio-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Tally",
+      "slug": "tally",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Tavily MCP",
+      "slug": "tavily-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Teamleader Focus",
+      "slug": "teamleader-focus",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "ThoughtSpot Spotter MCP",
+      "slug": "thoughtspot-spotter-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Threads",
+      "slug": "threads",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Ticket Tailor MCP",
+      "slug": "ticket-tailor-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Ticketmaster",
+      "slug": "ticketmaster",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Ticktick",
+      "slug": "ticktick",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Tiktok",
+      "slug": "tiktok",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "TikTok Ads",
+      "slug": "tiktok-ads",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Timely",
+      "slug": "timely",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "TinyFish MCP",
+      "slug": "tinyfish-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Todoist",
+      "slug": "todoist",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Todoist MCP",
+      "slug": "todoist-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Toneden",
+      "slug": "toneden",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Trello",
+      "slug": "trello",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Trello MCP",
+      "slug": "trello-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Twilio",
+      "slug": "twilio",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Twitch",
+      "slug": "twitch",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Twitter",
+      "slug": "twitter",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Typeform",
+      "slug": "typeform",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Vantage MCP",
+      "slug": "vantage-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Vercel",
+      "slug": "vercel",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Vercel MCP",
+      "slug": "vercel-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Vibe",
+      "slug": "vibe",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Vibe Prospecting MCP",
+      "slug": "vibe-prospecting-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "vidIQ MCP",
+      "slug": "vidiq-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Vimeo",
+      "slug": "vimeo",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "WakaTime",
+      "slug": "wakatime",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Webex",
+      "slug": "webex",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Webflow",
+      "slug": "webflow",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "WhatsApp",
+      "slug": "whatsapp",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Whop",
+      "slug": "whop",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "WildApricot",
+      "slug": "wildapricot",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Wispr Flow MCP",
+      "slug": "wispr-flow-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Wix",
+      "slug": "wix",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Wix MCP",
+      "slug": "wix-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "WordPress.com",
+      "slug": "wordpress-com",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Workable",
+      "slug": "workable",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Workday",
+      "slug": "workday",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Wrike",
+      "slug": "wrike",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "X MCP",
+      "slug": "x-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Xero",
+      "slug": "xero",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Yandex",
+      "slug": "yandex",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "YNAB",
+      "slug": "ynab",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "YouTube",
+      "slug": "youtube",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Zendesk",
+      "slug": "zendesk",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Zeplin",
+      "slug": "zeplin",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Zernio MCP",
+      "slug": "zernio-mcp",
+      "managedOAuth": false,
+      "isMcp": true
+    },
+    {
+      "name": "Zoho",
+      "slug": "zoho",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Zoho Bigin",
+      "slug": "zoho-bigin",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Zoho Books",
+      "slug": "zoho-books",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Zoho Calendar",
+      "slug": "zoho-calendar",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Zoho Campaigns",
+      "slug": "zoho-campaigns",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Zoho Desk",
+      "slug": "zoho-desk",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Zoho Inventory",
+      "slug": "zoho-inventory",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Zoho Invoice",
+      "slug": "zoho-invoice",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Zoho Mail",
+      "slug": "zoho-mail",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Zoho People",
+      "slug": "zoho-people",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Zoho Projects",
+      "slug": "zoho-projects",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Zoho Recruit",
+      "slug": "zoho-recruit",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Zoho Sign",
+      "slug": "zoho-sign",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Zoho WorkDrive",
+      "slug": "zoho-workdrive",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Zoom",
+      "slug": "zoom",
+      "managedOAuth": true,
+      "isMcp": false
+    },
+    {
+      "name": "Zoom Team Chat",
+      "slug": "zoom-team-chat",
+      "managedOAuth": false,
+      "isMcp": false
+    },
+    {
+      "name": "Zoominfo",
+      "slug": "zoominfo",
+      "managedOAuth": false,
+      "isMcp": false
+    }
+  ]
+}

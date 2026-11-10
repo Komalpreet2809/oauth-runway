@@ -1,0 +1,365 @@
+{
+  "auditedAt": "2026-11-11",
+  "issues": [
+    {
+      "guide": "github",
+      "path": "summary.timeToProduction.label",
+      "severity": "medium",
+      "type": "contradiction",
+      "problem": "The headline production clock says 'Same day (minutes)', but the verdict calls per-org approval 'The real production blocker' and stage 'org-approval' estimates 'Minutes to weeks per org'. A reader who only sees the label will think a company-org rollout takes minutes.",
+      "currentText": "Same day (minutes)",
+      "suggestedFix": "Same day for personal repos · minutes to weeks per customer org (org-owner approval)"
+    },
+    {
+      "guide": "github",
+      "path": "nuances[0].evidence.sources[0].quote",
+      "severity": "medium",
+      "type": "evidence",
+      "problem": "The nuance says 'an OAuth app owned or approved by a GitHub Enterprise Cloud org gets 15,000/hour', but the only quote is about a GitHub App owned by a GHEC org. The quote doesn't support the OAuth-app claim; corrections[0] already relies on a different sentence on the same page.",
+      "currentText": "Requests made on your behalf by a GitHub App that is owned by a GitHub Enterprise Cloud organization have a higher rate limit of 15,000 requests per hour.",
+      "suggestedFix": "Replace with the rate-limits page's verbatim sentence about OAuth apps owned or approved by a GitHub Enterprise Cloud organization (the one corrections[0] paraphrases), or keep this quote and add that sentence as a second source."
+    },
+    {
+      "guide": "github",
+      "path": "requirements[2].evidence.sources[0].quote",
+      "severity": "low",
+      "type": "evidence",
+      "problem": "The requirement is to register the v3 callback on GitHub, but the quote only says some toolkits default to the legacy v1 callback. That doesn't support the requirement and points the other way.",
+      "currentText": "Some toolkit defaults use the supported legacy callback /api/v1/auth-apps/add.",
+      "suggestedFix": "Register https://backend.composio.dev/api/v3/toolkits/auth/callback as the provider's authorized redirect URI."
+    },
+    {
+      "guide": "github",
+      "path": "stages[2].owner",
+      "severity": "medium",
+      "type": "owner",
+      "problem": "The GitHub App manifest stage is owned by 'agent', but steps[3] needs a signed-in human ('You (signed in to GitHub) open the page, submit it, check the name, and click Create GitHub App'). The stage title says 'you click Create' too. An agent can't finish this stage alone.",
+      "currentText": "agent",
+      "suggestedFix": "you"
+    },
+    {
+      "guide": "github",
+      "path": "stages[5].owner",
+      "severity": "low",
+      "type": "owner",
+      "problem": "Owner 'provider' reads as waiting on GitHub, but the stage's own estimate says it 'depends on the customer's org owner, not GitHub', and steps[0] ('Tell users up front…') is your action.",
+      "currentText": "provider",
+      "suggestedFix": "Keep owner 'provider' only if the UI labels it 'waiting on others'. Otherwise set 'you' and retitle to 'Get each customer organization to approve or install (waiting on their org owner, not GitHub)'."
+    },
+    {
+      "guide": "github",
+      "path": "corrections[0].claim",
+      "severity": "low",
+      "type": "tone",
+      "problem": "This exposes internal draft history ('Independent check (2026-11-05): Our draft said…') as a 'correction'. Corrections are meant to fix claims from common or secondary sources, and to a reviewer this reads as an unedited research log.",
+      "currentText": "…Independent check (2026-11-05): Our draft said…",
+      "suggestedFix": "The 15,000 requests/hour limit applies to any app owned by a GitHub Enterprise Cloud organization."
+    },
+    {
+      "guide": "slack",
+      "path": "limitsBeforeApproval[0].limit",
+      "severity": "high",
+      "type": "contradiction",
+      "problem": "It says the throttle applies only to apps 'created after May 29, 2025'. The guide's own quoted changelog (stages[4].evidence) says it also covers 'new installations of existing non-Marketplace applications', and nuances[0] says it hits new installs of older apps. A developer with an older app would wrongly expect new customer workspaces to be unthrottled.",
+      "currentText": "…were created after May 29, 2025…",
+      "suggestedFix": "conversations.history and conversations.replies: 1 request per minute and at most 15 messages per call (default and maximum 'limit' = 15). This applies to every new install, including new installs of apps created before May 29, 2025, of commercially distributed apps that aren't approved for the Marketplace. Marketplace apps and internal customer-built apps keep 50+ requests per minute and 1,000 messages per call."
+    },
+    {
+      "guide": "slack",
+      "path": "corrections[3].finding",
+      "severity": "medium",
+      "type": "contradiction",
+      "problem": "Same error as limitsBeforeApproval[0]: 'A Slack app created after May 29, 2025…' implies older apps are exempt on new installs, which the changelog quoted in stages[4] contradicts.",
+      "currentText": "…A Slack app created after May 29, 2025…",
+      "suggestedFix": "Any Slack app distributed without a Marketplace listing, old or new, gets 1 conversations.history/replies call per minute and at most 15 messages on each new install made since May 29, 2025. This matters for any agent that reads messages."
+    },
+    {
+      "guide": "slack",
+      "path": "summary.difficultyReason",
+      "severity": "medium",
+      "type": "contradiction",
+      "problem": "Says the Marketplace review takes 'up to about 10 weeks'. stages[8].estimate and nuances[3] say up to about 12 weeks (10 business days + 10 weeks).",
+      "currentText": "…followed by a review of up to about 10 weeks…",
+      "suggestedFix": "The OAuth setup is easy and needs no review. Unthrottled message reading in customers' workspaces needs a Slack Marketplace listing, which you can only apply for once the app has 10 active workspace installs, followed by a review of up to about 12 weeks (10 business days + 10 weeks)."
+    },
+    {
+      "guide": "slack",
+      "path": "stages[7].steps[1]",
+      "severity": "medium",
+      "type": "contradiction",
+      "problem": "'Won't review an app with fewer than 10 active workspaces and fewer than 20 monthly active users': with 'and', an app with 9 workspaces and 25 MAU would still be reviewed, which contradicts the hard 10-workspace minimum in the same step. The cited quote doesn't give the thresholds either. blockers[4].whatToDo has the same wording.",
+      "currentText": "…fewer than 10 active workspaces and fewer than 20 monthly active users…",
+      "suggestedFix": "Get the app installed and used on at least 10 active workspaces (used in the past 28 days, not sandboxes), and keep it at 10 or more for the whole review. Since November 2, 2026, Slack also closes low-usage submissions without review (check the changelog for the exact workspace and monthly-active-user thresholds), and you can't resubmit for 30 days."
+    },
+    {
+      "guide": "slack",
+      "path": "stages[6].owner",
+      "severity": "medium",
+      "type": "owner",
+      "problem": "The 'Measure read limits' stage is owned by 'agent', but steps[0] ('Create or use a second free workspace and connect it through the same auth config') needs a human to create a Slack workspace and click Allow on the install screen.",
+      "currentText": "agent",
+      "suggestedFix": "you"
+    },
+    {
+      "guide": "slack",
+      "path": "stages[3].steps[4]",
+      "severity": "medium",
+      "type": "cross-guide",
+      "problem": "The Slack guide never says to pass the auth config ID into sessions. GitHub (stages[3].steps[6]) and Gmail (stages[4].steps[5]) both warn that otherwise new connections keep using Composio's managed app. A Slack developer following this guide could ship on the managed app without noticing.",
+      "currentText": "Copy the auth config ID (ac_...) into your code or secret manager.",
+      "suggestedFix": "Copy the auth config ID (ac_...) and pass it in authConfigs (keyed by 'slack') when creating sessions, or new connections will keep using Composio's managed Slack app."
+    },
+    {
+      "guide": "slack",
+      "path": "nuances[10]",
+      "severity": "medium",
+      "type": "garbled",
+      "problem": "This duplicates nuances[9]: both say Slack's MCP server has no Dynamic Client Registration. Its note ('The DCR point comes from the independent check of the same page.') is leftover internal process text.",
+      "currentText": "…Slack's own MCP server (mcp.slack.com) does not support Dynamic Client Registration…",
+      "suggestedFix": "delete (if you want to keep it, add 'It is also limited to Marketplace and internal apps' to nuances[9])"
+    },
+    {
+      "guide": "slack",
+      "path": "nuances[0].evidence.sources[1].quote",
+      "severity": "low",
+      "type": "garbled",
+      "problem": "Flattening the struck-through date left the quote reading 'until September 2, 2025 March 3, 2026', which looks like a copy error. probes[9].result has the same problem.",
+      "currentText": "will not be impacted until September 2, 2025 March 3, 2026, when they will also be subject to the new, lower rate limits.",
+      "suggestedFix": "will not be impacted until [struck through: September 2, 2025] March 3, 2026, when they will also be subject to the new, lower rate limits."
+    },
+    {
+      "guide": "slack",
+      "path": "nuances[0].evidence.level",
+      "severity": "low",
+      "type": "evidence",
+      "problem": "Labelled 'tested', but it cites a live docs page and a raw Wayback URL rather than the on-page probe (#probe-10), and its decision-relevant claim (a reconnect counts as a new install) is inference by the note's own admission.",
+      "currentText": "tested",
+      "suggestedFix": "sourced (and cite #probe-10 for the snapshot comparison)"
+    },
+    {
+      "guide": "slack",
+      "path": "corrections[0].claim",
+      "severity": "low",
+      "type": "tone",
+      "problem": "Internal draft history ('Independent check (2026-11-05): Parts of our draft implied…') is presented as a correction of a common claim.",
+      "currentText": "…Independent check (2026-11-05): Parts of our draft implied…",
+      "suggestedFix": "A Slack Marketplace listing is required for any app to use the Real-time Search API or the Slack MCP server."
+    },
+    {
+      "guide": "slack",
+      "path": "stages[9].steps[2]",
+      "severity": "low",
+      "type": "evidence",
+      "problem": "'Slack can delist an app without notice if its landing page or install flow is broken' is stated as fact, but none of this stage's sources support it.",
+      "currentText": "…Slack can delist an app without notice…",
+      "suggestedFix": "Keep the landing page, support and privacy links working, because Marketplace reviewers and users rely on them. (Or add the Slack guideline that states the delisting rule.)"
+    },
+    {
+      "guide": "slack",
+      "path": "summary.verdict",
+      "severity": "low",
+      "type": "contradiction",
+      "problem": "'setup takes about 15 minutes' disagrees with handsOnEffort ('About 30 minutes to create, connect and distribute') and with the stage estimates, which add up to about 30–40 minutes.",
+      "currentText": "…setup takes about 15 minutes…",
+      "suggestedFix": "If you do create your own app, setup takes about 30 minutes and other workspaces can install it without any review."
+    },
+    {
+      "guide": "slack",
+      "path": "blockers[1].whatToDo",
+      "severity": "low",
+      "type": "cross-guide",
+      "problem": "'not a mix of the two' reads as 'register only one callback'. The GitHub guide (stages[1].steps[6]) recommends registering both v3 and v1 on the provider. The real rule in both guides is that the auth config's URI must be one of the URIs registered on the provider.",
+      "currentText": "Use exactly the same Composio callback in the Slack app's Redirect URLs and in the Composio auth config: v3 (https://backend.composio.dev/api/v3/toolkits/auth/callback) or the legacy v1 URL, not a mix of the two. The URL must use HTTPS and can't contain '#'.",
+      "suggestedFix": "Make sure the redirect URI in the Composio auth config (v3 https://backend.composio.dev/api/v3/toolkits/auth/callback, or the legacy v1 URL) is listed exactly in the Slack app's Redirect URLs. Registering both callbacks in Slack is fine. The URL must use HTTPS and can't contain '#'."
+    },
+    {
+      "guide": "slack",
+      "path": "summary.timeToFirstConnection.note",
+      "severity": "low",
+      "type": "garbled",
+      "problem": "'Tier 3 limits' is unexplained jargon for a first-time reader. Elsewhere the guide gives the numbers (50+ requests per minute, up to 1,000 messages).",
+      "currentText": "…normal Tier 3 limits…",
+      "suggestedFix": "…it should get the normal limits that internal apps get (Slack's 'Tier 3': 50+ requests per minute, up to 1,000 messages per call)…"
+    },
+    {
+      "guide": "gmail",
+      "path": "summary.timeToFirstConnection.label",
+      "severity": "medium",
+      "type": "contradiction",
+      "problem": "Says '15–30 min', but the stages needed before the first connection (decide-scopes 15–30, create-project 5–10, configure-auth-platform 15, create-client 5, composio-auth-config 5, first-connection 5) add up to 50–70 minutes, and handsOnEffort says 'About 1 hour'.",
+      "currentText": "15–30 min",
+      "suggestedFix": "45–70 min"
+    },
+    {
+      "guide": "gmail",
+      "path": "stages[7].owner",
+      "severity": "medium",
+      "type": "owner",
+      "problem": "The brand-verification stage is owned by 'provider', but all four steps are developer actions: Publish app, click Verify Branding, fix issues, and click Publish branding within 7 days. If the developer misses that 7-day deadline, verification has to be redone.",
+      "currentText": "provider",
+      "suggestedFix": "you (and mention the provider wait in the estimate: 'Minutes (automated); 2–3 business days if manual')"
+    },
+    {
+      "guide": "gmail",
+      "path": "stages[8].owner",
+      "severity": "medium",
+      "type": "owner",
+      "problem": "The data-access verification stage is owned by 'provider', but every step is the developer's: open Verification Center, paste justifications, submit, and reply quickly to Trust & Safety. Only the 'several weeks' wait belongs to Google.",
+      "currentText": "provider",
+      "suggestedFix": "Split into a 'you' stage (submit: the 4 current steps, ~1 hour) and a 'provider' stage (Google review, 'Several weeks'). Or set owner to 'you' and keep the wait in the estimate."
+    },
+    {
+      "guide": "gmail",
+      "path": "blockers[0].whatToDo",
+      "severity": "low",
+      "type": "contradiction",
+      "problem": "'Budget roughly $500–$5,000+' disagrees with summary.costs ('$500–$4,500 … quotes seen from about $540 to $5,400').",
+      "currentText": "…Budget roughly $500–$5,000+…",
+      "suggestedFix": "Budget roughly $500–$5,500 (lab prices vary) and 2–3+ weeks every year, or redesign around gmail.send only (sensitive, no CASA), or stay on Composio's managed Gmail app."
+    },
+    {
+      "guide": "gmail",
+      "path": "stages[10].steps[2]",
+      "severity": "low",
+      "type": "garbled",
+      "problem": "This step says 'Letter of Assessment', while stages[9].steps[4], requirements[10] and agentVsYou.youMust[6] say 'Letter of Validation'. A beginner can't tell whether these are one document or two.",
+      "currentText": "…Letter of Assessment date…",
+      "suggestedFix": "Re-verify and repeat CASA at least every 12 months after your assessor's approval date (the Letter of Validation; Google's policy calls it the Letter of Assessment, LOA). Adding a new restricted scope may need a fresh assessment."
+    },
+    {
+      "guide": "gmail",
+      "path": "limitsBeforeApproval[3].evidence.level",
+      "severity": "low",
+      "type": "evidence",
+      "problem": "Labelled 'sourced', but the decision-relevant part (that the domain shown is the redirect host, i.e. composio.dev) comes only from a secondary forum post, as its own note admits. Under the schema, that makes it 'uncertain'.",
+      "currentText": "sourced",
+      "suggestedFix": "uncertain"
+    },
+    {
+      "guide": "gmail",
+      "path": "corrections[0].claim",
+      "severity": "low",
+      "type": "tone",
+      "problem": "Internal draft history ('Independent check (2026-11-05): Our draft said…') is presented as a correction. corrections[1] has the same problem.",
+      "currentText": "…Independent check (2026-11-05): Our draft said…",
+      "suggestedFix": "Google's 2026-09-03 policy update added the MCP/agent rules and the ban on training AI models with user data."
+    },
+    {
+      "guide": "gmail",
+      "path": "corrections[1].claim",
+      "severity": "low",
+      "type": "tone",
+      "problem": "Internal draft history is presented as a correction of a common claim.",
+      "currentText": "…Independent check (2026-11-05): Our draft gave…",
+      "suggestedFix": "CASA Tier 2 costs $500–$4,500."
+    },
+    {
+      "guide": "gmail",
+      "path": "corrections[3].finding",
+      "severity": "low",
+      "type": "contradiction",
+      "problem": "Calls gmail.send-only an 'exception' to brand verification, restricted-scope review and CASA. gmail.send still needs brand and sensitive-scope verification (nuances[3] quotes 'requires Google verification'). The list also leaves out Composio's managed app, which the summary names as the easiest path.",
+      "currentText": "…The only exceptions are gmail.send-only (sensitive), Internal apps, or staying under 100 test users.…",
+      "suggestedFix": "For Gmail, that wording understates it. Every read, draft, modify or settings scope is restricted, so a public app needs brand verification, restricted-scope verification and an annual CASA assessment. You avoid restricted review and CASA only by requesting gmail.send alone (sensitive scope verification is still required), using an Internal app, staying in Testing with up to 100 test users, or using Composio's managed app."
+    },
+    {
+      "guide": "gmail",
+      "path": "stages[9].steps[3]",
+      "severity": "low",
+      "type": "garbled",
+      "problem": "'Fix any failed CWEs' is unexplained jargon in a guide aimed at first-timers. agentHelp's 'SAST/DAST' has the same problem.",
+      "currentText": "…Fix any failed CWEs…",
+      "suggestedFix": "Fix every finding the scan flags (CWEs, i.e. standard weakness categories), then submit the scan results and any SOC 2, ISO/IEC 27001, or HITRUST reports you have to speed things up."
+    },
+    {
+      "guide": "linear-mcp",
+      "path": "nuances[0].evidence.sources[0]",
+      "severity": "medium",
+      "type": "reference",
+      "problem": "The claim 'The CIMD path is live: passing an HTTPS URL as client_id makes Linear fetch it' cites #probe-8 ('Authorize with an unregistered client_id', which returns 'Invalid client_id'). The probe that shows the CIMD fetch is #probe-9 ('Authorize with a CIMD-style URL client_id'), and #probe-1 shows client_id_metadata_document_supported.",
+      "currentText": "{\"url\":\"#probe-8\",\"title\":\"Authorize with an unregistered client_id\"}",
+      "suggestedFix": "{\"url\": \"#probe-9\", \"title\": \"Authorize with a CIMD-style URL client_id\"} (and add {\"url\": \"#probe-1\", \"title\": \"OAuth authorization server metadata\"})"
+    },
+    {
+      "guide": "linear-mcp",
+      "path": "probes[10]",
+      "severity": "medium",
+      "type": "garbled",
+      "problem": "This probe entry records a request that was never sent ('not sent — read-only research run'; result 'Not attempted; pending user approval'). It is internal workflow text, not a probe result, and 'pending user approval' will puzzle reviewers.",
+      "currentText": "…Not attempted; pending user approval…",
+      "suggestedFix": "delete (it's already covered by openQuestions[0])"
+    },
+    {
+      "guide": "linear-mcp",
+      "path": "stages[3].evidence.note",
+      "severity": "low",
+      "type": "tone",
+      "problem": "'A live registration test is pending user approval.' leaks the research agent's workflow onto the page. openQuestions[0] ends with the same sentence.",
+      "currentText": "…A live registration test is pending user approval.…",
+      "suggestedFix": "That the DCR endpoint exists is tested (discovery document; GET /register returns 405, so the route is live). Whether registration succeeds with Composio's redirect URI, and whether Linear issues a client_secret, is untested because no registration request was sent."
+    },
+    {
+      "guide": "linear-mcp",
+      "path": "stages[2].steps[3]",
+      "severity": "low",
+      "type": "reference",
+      "problem": "Stage order loops: the auth-config stage tells you to 'get them from the DCR stage below', and the DCR stage then says to paste into 'the Composio auth config from the previous stage'. The reader has to leave a half-finished dashboard form partway through.",
+      "currentText": "…get them from the DCR stage below…",
+      "suggestedFix": "If the form asks for a Client ID and Client Secret, stop here and do the next stage ('Register an OAuth client by API'), then come back, choose 'Use your own developer credentials' and paste them. The redirect URI registered with Linear must be exactly https://backend.composio.dev/api/v3/toolkits/auth/callback (or the legacy https://backend.composio.dev/api/v1/auth-apps/add, but the same one in both places)."
+    },
+    {
+      "guide": "linear-mcp",
+      "path": "stages[1].evidence.sources",
+      "severity": "low",
+      "type": "reference",
+      "problem": "steps[1] (GET the protected-resource document, authorization_servers) depends on #probe-3, which isn't cited. Only #probe-5 and #probe-1 are.",
+      "currentText": "[{\"url\":\"#probe-5\",\"title\":\"MCP endpoint without a token\"},{\"url\":\"#probe-1\",\"title\":\"OAuth authorization server metadata\"}]",
+      "suggestedFix": "Add {\"url\": \"#probe-3\", \"title\": \"Protected resource metadata (/mcp)\"}."
+    },
+    {
+      "guide": "linear-mcp",
+      "path": "nuances[6].evidence.level",
+      "severity": "low",
+      "type": "evidence",
+      "problem": "Labelled 'tested', but the probe only shows that the jwt-bearer/id-jag grant exists. The nuance's main point, that 'This is how Okta and Claude-issued auto-connect skip the consent screen', is inference by the note's own admission.",
+      "currentText": "tested",
+      "suggestedFix": "uncertain"
+    },
+    {
+      "guide": "linear-mcp",
+      "path": "nuances[5].text",
+      "severity": "low",
+      "type": "contradiction",
+      "problem": "Gives the revocation endpoint as https://mcp.linear.app/token, the same URL as the token endpoint (stages[1].steps[2]: token_endpoint (/token)). That looks like a transcription error, and a developer calling it to revoke would hit the token endpoint.",
+      "currentText": "…Linear exposes revocation at https://mcp.linear.app/token (revocation_endpoint)…",
+      "suggestedFix": "Re-check #probe-1's revocation_endpoint value. If it really is /token, say so explicitly ('revocation is served from the same /token URL'). Otherwise use the correct URL."
+    },
+    {
+      "guide": "linear-mcp",
+      "path": "summary.timeToFirstConnection.label",
+      "severity": "low",
+      "type": "contradiction",
+      "problem": "'5–15 min' is below the sum of the stage estimates before first connection (5 + 1 + 5 + 1–2 + 2–5 = 14–18 min) and below handsOnEffort (15–30 min).",
+      "currentText": "5–15 min",
+      "suggestedFix": "15–20 min"
+    },
+    {
+      "guide": "linear-mcp",
+      "path": "app.developerPortal",
+      "severity": "low",
+      "type": "garbled",
+      "problem": "The 'developer portal' link points to a raw JSON discovery document, while the guide stresses there is no portal. The page will show a JSON blob under a 'Developer portal' label.",
+      "currentText": "https://mcp.linear.app/.well-known/oauth-authorization-server",
+      "suggestedFix": "https://linear.app/docs/mcp"
+    },
+    {
+      "guide": "linear-mcp",
+      "path": "nuances[2].text",
+      "severity": "low",
+      "type": "evidence",
+      "problem": "'actor=app installs need a workspace admin and cannot request the admin scope' is unexplained jargon, and the quoted source only supports the first half (admin needed), not 'cannot request the admin scope'.",
+      "currentText": "…actor=app installs need a workspace admin and cannot request the admin scope…",
+      "suggestedFix": "Classic Linear OAuth apps (Settings → API → OAuth applications) also have no Linear review. They default to private (your workspace only); set distribution to public so other workspaces can install. Only the Integration Directory listing is curated, and it is optional for OAuth to work. Apps installed as their own user (actor=app) must be installed by a workspace admin."
+    }
+  ]
+}

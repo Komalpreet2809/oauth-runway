@@ -1,0 +1,778 @@
+{
+  "schemaVersion": 1,
+  "slug": "linear-mcp",
+  "app": {
+    "name": "Linear MCP",
+    "provider": "Linear",
+    "website": "https://linear.app/docs/mcp",
+    "developerPortal": "https://linear.app/docs/mcp",
+    "category": "Project management (remote MCP server)",
+    "composio": {
+      "toolkit": "linear_mcp",
+      "managedOAuthAvailable": false,
+      "whenYouNeedYourOwnApp": "Composio's directory lists Linear MCP under 'Bring your own OAuth app', but there is no developer-portal app to create: Linear's MCP server registers OAuth clients by API (Dynamic Client Registration), and Composio's Linear MCP toolkit uses the DCR_OAUTH auth scheme. If you only need Linear tools and triggers, the regular Linear toolkit (slug LINEAR) is Composio-managed and needs no app at all."
+    }
+  },
+  "meta": {
+    "generatedAt": "2026-11-05",
+    "generatedBy": "library-research-agent",
+    "lastVerifiedAt": "2026-11-11"
+  },
+  "summary": {
+    "verdict": "No provider portal work and no Linear review: Linear's MCP server lets any client register itself by API (DCR) or by a hosted metadata URL (CIMD), so the only human steps are a Linear user signing in and approving consent, plus a workspace admin if that workspace requires approval for third-party apps. We have not yet confirmed whether Composio runs the DCR step for you or asks you to paste a DCR-issued Client ID/Secret.",
+    "difficulty": "easy",
+    "difficultyReason": "Client registration is an API call with no review queue; the open risks are Composio-side setup details and per-workspace admin policies, not provider approval.",
+    "timeToFirstConnection": {
+      "label": "15–20 min",
+      "note": "Create the Linear MCP auth config in Composio (with DCR done by Composio or by an agent), then connect your own Linear account through Linear's consent screen. Registration with Composio's redirect URI was tested live (201 in under a second). Signing in and Composio's side were not tested."
+    },
+    "timeToProduction": {
+      "label": "Same day (no provider review)",
+      "note": "Linear documents no review for MCP clients. Per customer workspace, add the time it takes their admin to approve the app if third-party application approvals are turned on (paid plans); whether DCR-registered MCP clients trigger that approval is unconfirmed."
+    },
+    "handsOnEffort": "About 15–30 minutes: decide between Linear MCP and the managed Linear toolkit, create the auth config, connect a test account, and smoke-test a read and a write tool.",
+    "approvalWait": "None from Linear. Possible per-workspace wait for an admin approval in workspaces that require third-party app approval (uncertain for MCP clients); enterprise Okta or Claude-issued auto-connect setups are optional admin work, not approvals.",
+    "costs": "No Linear fee documented for MCP access or client registration. Third-party app approval controls exist only on paid Linear plans. Composio plan pricing applies separately.",
+    "evidence": {
+      "level": "sourced",
+      "sources": [
+        {
+          "url": "https://linear.app/docs/mcp",
+          "quote": "The interactive setup flow uses OAuth 2.1 with dynamic client registration."
+        },
+        {
+          "url": "#probe-1",
+          "title": "OAuth authorization server metadata"
+        },
+        {
+          "url": "https://docs.composio.dev/toolkits/linear_mcp",
+          "quote": "Auth: DCR_OAUTH"
+        },
+        {
+          "url": "https://linear.app/docs/third-party-application-approvals",
+          "quote": "Third-party application approvals are available on any paid plan."
+        },
+        {
+          "url": "#probe-11",
+          "title": "Real Dynamic Client Registration with Composio's redirect URI"
+        }
+      ],
+      "note": "Registration was tested live on 2026-11-11 and took under a second with no review. Other timings are estimates. Linear's MCP docs mention no review or approval process for MCP clients."
+    }
+  },
+  "stages": [
+    {
+      "id": "choose-toolkit",
+      "title": "Decide: Linear MCP or the managed Linear toolkit",
+      "phase": "setup",
+      "owner": "you",
+      "estimate": "5 min",
+      "steps": [
+        "Pick the regular Linear toolkit (slug LINEAR) if you want zero OAuth setup: Composio provides the OAuth app, and it has triggers (12) that Linear MCP does not have in Composio (0).",
+        "Pick Linear MCP (slug LINEAR_MCP) if you want Linear's own MCP tool surface (78 tools in Composio's catalog, version 20261018_00), including documents, inbox notifications and Linear Agent skills.",
+        "If you need read-only access, plan to request only the read scope (or use the https://mcp.linear.app/mcp/readonly endpoint if you connect to Linear directly)."
+      ],
+      "agentHelp": "An agent can diff the two toolkit pages (docs.composio.dev/toolkits/linear and /toolkits/linear_mcp) and list which tools your use case needs from each.",
+      "evidence": {
+        "level": "sourced",
+        "sources": [
+          {
+            "url": "https://docs.composio.dev/toolkits/linear",
+            "quote": "Composio-managed OAuth available? Yes"
+          },
+          {
+            "url": "https://docs.composio.dev/toolkits/linear_mcp",
+            "quote": "Composio-managed OAuth available? No"
+          },
+          {
+            "url": "https://linear.app/docs/mcp",
+            "quote": "Clients that request read are granted read-only access, and the underlying token can’t reach write APIs."
+          }
+        ],
+        "note": "Tool and trigger counts are from the Composio toolkit pages on 2026-11-05 and change with toolkit versions."
+      }
+    },
+    {
+      "id": "probe-discovery",
+      "title": "Confirm Linear's OAuth discovery (no portal needed)",
+      "phase": "setup",
+      "owner": "agent",
+      "estimate": "1 min",
+      "steps": [
+        "GET https://mcp.linear.app/mcp without a token and read the WWW-Authenticate header; it points to https://mcp.linear.app/.well-known/oauth-protected-resource/mcp.",
+        "GET that protected-resource document; authorization_servers is https://mcp.linear.app.",
+        "GET https://mcp.linear.app/.well-known/oauth-authorization-server and record authorization_endpoint (/authorize), token_endpoint (/token), registration_endpoint (/register), scopes_supported (read, write, openid, email) and code_challenge_methods_supported (S256)."
+      ],
+      "agentHelp": "Fully automatable with plain HTTP GETs; see the probes section for the exact responses observed on 2026-11-05.",
+      "evidence": {
+        "level": "tested",
+        "sources": [
+          {
+            "url": "#probe-5",
+            "title": "MCP endpoint without a token"
+          },
+          {
+            "url": "#probe-1",
+            "title": "OAuth authorization server metadata"
+          },
+          {
+            "url": "#probe-3",
+            "title": "Protected resource metadata (/mcp)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "create-auth-config",
+      "title": "Create the Linear MCP auth config in Composio",
+      "phase": "setup",
+      "owner": "you",
+      "estimate": "5 min",
+      "steps": [
+        "In the Composio dashboard go to Auth Configs → Create Auth Config → search 'Linear MCP' (slug LINEAR_MCP).",
+        "Select the OAuth scheme the toolkit offers (the toolkit page lists it as DCR_OAUTH).",
+        "If the form does not ask for a Client ID and Client Secret, Composio is doing Dynamic Client Registration for you: save the auth config and go to the connect stage.",
+        "If the form asks for a Client ID and Client Secret, stop here and do the next stage ('Register an OAuth client by API'), then come back, choose 'Use your own developer credentials' and paste them. The redirect URI registered with Linear must be exactly https://backend.composio.dev/api/v3/toolkits/auth/callback (or the legacy https://backend.composio.dev/api/v1/auth-apps/add, but the same one in both places).",
+        "Request scopes read and write (or only read for read-only access)."
+      ],
+      "agentHelp": "An agent with your Composio API key can call GET https://backend.composio.dev/api/v3.1/toolkits/linear_mcp and read composio_managed_auth_schemes and the auth config fields to tell you which branch applies before you open the dashboard.",
+      "evidence": {
+        "level": "uncertain",
+        "sources": [
+          {
+            "url": "https://docs.composio.dev/toolkits/linear_mcp",
+            "quote": "Auth: DCR_OAUTH"
+          },
+          {
+            "url": "https://docs.composio.dev/docs/extending-sessions/custom-mcp",
+            "quote": "The server must support Dynamic Client Registration and the authorization-code flow."
+          },
+          {
+            "url": "https://docs.composio.dev/toolkits/managed-auth",
+            "quote": "If the field does not contain that method, register your own OAuth app and supply its client ID and client secret."
+          }
+        ],
+        "note": "Composio's Custom MCP docs show Composio performing DCR itself from a discovery_url, and its SDK reference lists DCR_OAUTH among Composio-managed schemes, but no page states what the built-in LINEAR_MCP auth config form asks for. The toolkit endpoint returned 401 without an API key, so the dashboard form was not checked."
+      }
+    },
+    {
+      "id": "dcr-register",
+      "title": "Register an OAuth client by API (only if Composio asks for credentials)",
+      "phase": "setup",
+      "owner": "agent",
+      "estimate": "1–2 min",
+      "steps": [
+        "POST https://mcp.linear.app/register with Content-Type: application/json and a body like: {\"client_name\": \"Acme Agent (via Composio)\", \"redirect_uris\": [\"https://backend.composio.dev/api/v3/toolkits/auth/callback\"], \"grant_types\": [\"authorization_code\", \"refresh_token\"], \"response_types\": [\"code\"], \"token_endpoint_auth_method\": \"client_secret_post\", \"scope\": \"read write\"}.",
+        "Expect HTTP 201 with client_id and, for a confidential client, client_secret and client_secret_expires_at (0 means it does not expire). Store the secret in a secrets manager, not in code.",
+        "Use token_endpoint_auth_method \"client_secret_post\" or \"client_secret_basic\" if Composio needs a Client Secret; \"none\" registers a public PKCE client with no secret, which a Client ID/Secret form cannot use.",
+        "Paste client_id and client_secret into the Composio auth config from the previous stage.",
+        "Alternative with no registration call at all: Linear also accepts Client ID Metadata Documents (CIMD) — host a JSON file at an HTTPS URL and use that URL as the client_id. Composio's Custom MCP docs say CIMD-only flows are not supported there, so prefer DCR with Composio."
+      ],
+      "agentHelp": "An agent can send the registration request itself; no human, portal, or Linear account is needed for this step. This research did not send it (read-only run).",
+      "evidence": {
+        "level": "tested",
+        "sources": [
+          {
+            "url": "#probe-11",
+            "title": "Real Dynamic Client Registration with Composio's redirect URI"
+          },
+          {
+            "url": "#probe-12",
+            "title": "Authorize with the newly registered client"
+          },
+          {
+            "url": "#probe-13",
+            "title": "Same client, different redirect URI"
+          },
+          {
+            "url": "#probe-1",
+            "title": "OAuth authorization server metadata"
+          }
+        ],
+        "note": "Tested live on 2026-11-11: registration with Composio's redirect URI succeeded in under a second, and Linear's authorize step accepted the new client. Signing in and Composio's side of the flow were not tested."
+      }
+    },
+    {
+      "id": "connect-test-account",
+      "title": "Connect your own Linear account",
+      "phase": "test",
+      "owner": "you",
+      "estimate": "2–5 min",
+      "steps": [
+        "From Composio, start a connection for the Linear MCP auth config (connect link or SDK) for a test user ID.",
+        "Sign in to Linear on the mcp.linear.app consent page, pick the workspace, and approve the requested scopes.",
+        "Run one read tool (for example list teams or get the current user) and one write tool in a sandbox team to confirm scopes.",
+        "To test a second workspace, create a separate connection; reconnecting the same session does not switch workspaces."
+      ],
+      "agentHelp": "An agent can generate the connect link, run the smoke-test tool calls after you approve, and report scope errors. It cannot click the consent screen for you.",
+      "evidence": {
+        "level": "sourced",
+        "sources": [
+          {
+            "url": "https://linear.app/docs/mcp",
+            "quote": "Because reconnecting alone does not switch the workspace within an existing auth session, each workspace needs its own separate authentication context."
+          }
+        ],
+        "note": "The consent screen itself was not viewed (no login). /authorize with an unknown client_id returns 400 'Invalid client_id' before any login page."
+      }
+    },
+    {
+      "id": "workspace-admin-approval",
+      "title": "Handle per-workspace admin policies for your users",
+      "phase": "launch",
+      "owner": "you",
+      "estimate": "0 min to a few days per workspace (depends on each customer's admin)",
+      "steps": [
+        "Tell customers on paid Linear plans that their admin may have turned on Settings > Administration > Security > third-party application approvals; members then see a 'request approval' screen instead of connecting.",
+        "Ask the customer's workspace admin (or owner, on Enterprise) to approve the app from the email or in-app notification; approved apps appear in Settings > Applications.",
+        "For enterprise customers who want no consent screen, point their admin to Linear's enterprise-managed authorization (Okta) settings; this is optional and was documented for Claude, not for Composio."
+      ],
+      "agentHelp": "An agent can draft the note to the customer's admin explaining what the app is, which scopes it requests (read, write), and why.",
+      "evidence": {
+        "level": "uncertain",
+        "sources": [
+          {
+            "url": "https://linear.app/docs/third-party-application-approvals",
+            "quote": "When a workspace member tries to install a third-party app, Linear will display a screen which allows the member to request approval"
+          },
+          {
+            "url": "https://linear.app/docs/mcp",
+            "quote": "Then enable MCP enterprise managed authentication from the bottom of your Okta identity provider settings in Linear."
+          }
+        ],
+        "note": "The approvals page does not mention MCP or dynamically registered clients, so whether a Composio/DCR client counts as a 'third-party app' here is unconfirmed."
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "item": "A Linear account in a workspace you can use for testing (any plan).",
+      "neededFor": "testing",
+      "evidence": {
+        "level": "sourced",
+        "sources": [
+          {
+            "url": "https://linear.app/docs/mcp",
+            "quote": "The interactive setup flow uses OAuth 2.1 with dynamic client registration."
+          }
+        ],
+        "note": "Linear's MCP docs list no plan restriction for connecting; plan requirements appear only for admin features (approvals, Claude auto-connect)."
+      }
+    },
+    {
+      "item": "A Composio project with access to the Linear MCP toolkit (dashboard access, or an API key for scripted setup).",
+      "neededFor": "setup",
+      "evidence": {
+        "level": "sourced",
+        "sources": [
+          {
+            "url": "https://docs.composio.dev/toolkits/linear_mcp",
+            "quote": "Slug: LINEAR_MCP"
+          }
+        ]
+      }
+    },
+    {
+      "item": "An HTTPS redirect URI that matches exactly in the registered client and in Composio (Composio's is https://backend.composio.dev/api/v3/toolkits/auth/callback).",
+      "neededFor": "setup",
+      "evidence": {
+        "level": "sourced",
+        "sources": [
+          {
+            "url": "https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization",
+            "quote": "All redirect URIs MUST be either localhost or use HTTPS."
+          },
+          {
+            "url": "https://docs.composio.dev/docs/authentication/custom-app-vs-managed-app",
+            "quote": "For OAuth toolkits, the dashboard shows the redirect URI to add in the provider's developer portal."
+          }
+        ]
+      }
+    },
+    {
+      "item": "No verified domain, privacy policy, demo video, business verification or listing is required by Linear for MCP clients.",
+      "neededFor": "production",
+      "evidence": {
+        "level": "uncertain",
+        "sources": [
+          {
+            "url": "https://linear.app/docs/mcp",
+            "quote": "The interactive setup flow uses OAuth 2.1 with dynamic client registration."
+          }
+        ],
+        "note": "Inferred from absence: Linear's MCP docs and discovery metadata describe no review or prerequisites. Linear could add a registration policy at any time."
+      }
+    }
+  ],
+  "limitsBeforeApproval": [
+    {
+      "limit": "There is no provider 'unapproved' mode for Linear MCP clients: no test-user cap or unverified-app warning is documented. The only gate found is per-workspace third-party app approval on paid plans, if a workspace admin turned it on.",
+      "evidence": {
+        "level": "uncertain",
+        "sources": [
+          {
+            "url": "https://linear.app/docs/third-party-application-approvals",
+            "quote": "Requiring approval for third-party applications ensures that the people with permission to manage apps control which applications can access the workspace and its data."
+          }
+        ],
+        "note": "Absence of documented caps is not proof that none exist; not tested with a live client."
+      }
+    },
+    {
+      "limit": "One connection reaches one Linear workspace; each additional workspace needs its own authorization.",
+      "evidence": {
+        "level": "sourced",
+        "sources": [
+          {
+            "url": "https://linear.app/docs/mcp",
+            "quote": "each workspace needs its own separate authentication context."
+          }
+        ]
+      }
+    }
+  ],
+  "blockers": [
+    {
+      "title": "Unknown or unregistered client_id",
+      "symptom": "Linear returns HTTP 400 with the plain-text body 'Invalid client_id' when the user is sent to https://mcp.linear.app/authorize.",
+      "whatToDo": "Check that the Client ID in Composio is the one returned by POST /register (or that Composio's own DCR step completed). Re-register if the client was deleted or the auth config was recreated.",
+      "evidence": {
+        "level": "tested",
+        "sources": [
+          {
+            "url": "#probe-8",
+            "title": "Authorize with an unregistered client_id"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Composio asks for a Client ID/Secret and there is no portal to get them from",
+      "symptom": "The Linear MCP auth config form wants Client ID and Client Secret, and Linear's settings have no 'MCP app' page.",
+      "whatToDo": "Register a confidential client by API (see the DCR stage) with the exact Composio redirect URI, or switch to the managed Linear toolkit if you do not need MCP-specific tools.",
+      "evidence": {
+        "level": "uncertain",
+        "sources": [
+          {
+            "url": "https://docs.composio.dev/toolkits/managed-auth",
+            "quote": "If the field does not contain that method, register your own OAuth app and supply its client ID and client secret."
+          }
+        ],
+        "note": "Hypothetical until someone opens the LINEAR_MCP auth config form; listed because the directory classifies Linear MCP as bring-your-own."
+      }
+    },
+    {
+      "title": "Workspace requires third-party app approval",
+      "symptom": "A member sees a screen to request approval instead of the normal consent flow.",
+      "whatToDo": "The member submits the request (optionally with a reason); a workspace admin (owner on Enterprise) approves it from the email or in-app notification.",
+      "evidence": {
+        "level": "uncertain",
+        "sources": [
+          {
+            "url": "https://linear.app/docs/third-party-application-approvals",
+            "quote": "Workspace owners in Enterprise workspaces—and workspace admins in all other paid workspaces—will receive an email and an in-app notification"
+          }
+        ],
+        "note": "Documented for third-party apps generally; not confirmed for DCR-registered MCP clients."
+      }
+    },
+    {
+      "title": "Using the old SSE endpoint",
+      "symptom": "GET https://mcp.linear.app/sse returns 404 Not Found (plain text) instead of 401.",
+      "whatToDo": "Use the Streamable HTTP endpoint https://mcp.linear.app/mcp (or /mcp/readonly).",
+      "evidence": {
+        "level": "tested",
+        "sources": [
+          {
+            "url": "#probe-6",
+            "title": "Legacy SSE endpoint without a token"
+          },
+          {
+            "url": "https://linear.app/docs/mcp",
+            "quote": "The SSE endpoint at https://mcp.linear.app/sse is a deprecated fallback for clients that do not support Streamable HTTP."
+          }
+        ],
+        "note": "Probed without a token, with and without Accept: text/event-stream. The docs still describe /sse as a fallback, so it may respond differently to an authenticated client."
+      }
+    }
+  ],
+  "nuances": [
+    {
+      "text": "Dynamically registered clients get a client_secret that expires (Linear sets client_secret_expires_at). Treat the registration as something to monitor and renew, not a one-time setup.",
+      "evidence": {
+        "level": "tested",
+        "sources": [
+          {
+            "url": "#probe-11",
+            "title": "Real Dynamic Client Registration with Composio's redirect URI"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Linear's MCP server advertises both DCR (registration_endpoint) and Client ID Metadata Documents (client_id_metadata_document_supported: true). The CIMD path is live: passing an HTTPS URL as client_id makes Linear fetch it. The current MCP spec prefers CIMD and keeps DCR for backwards compatibility, while Composio's Custom MCP docs support DCR only.",
+      "evidence": {
+        "level": "tested",
+        "sources": [
+          {
+            "url": "#probe-9",
+            "title": "Authorize with a CIMD-style URL client_id"
+          },
+          {
+            "url": "#probe-1",
+            "title": "OAuth authorization server metadata"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Linear's MCP server also accepts a bearer token from a classic Linear OAuth app or an API key, so a developer who already has a Linear OAuth app can reuse its tokens against MCP without a second consent.",
+      "evidence": {
+        "level": "sourced",
+        "sources": [
+          {
+            "url": "https://linear.app/docs/mcp",
+            "quote": "integrate with an existing Linear OAuth application without an extra authentication hop."
+          }
+        ]
+      }
+    },
+    {
+      "text": "Classic Linear OAuth apps (Settings → API → OAuth applications) also have no Linear review. They default to private (your workspace only); set distribution to public so other workspaces can install. Only the Integration Directory listing is curated, and it is optional for OAuth to work. Apps installed as their own user (actor=app) must be installed by a workspace admin.",
+      "evidence": {
+        "level": "sourced",
+        "sources": [
+          {
+            "url": "https://linear.app/developers/oauth-app-manifests",
+            "quote": "Whether the app should be available only in the current workspace or installable by other workspaces."
+          },
+          {
+            "url": "https://linear.app/developers/integration-directory",
+            "quote": "We'll accept integrations that we think are useful to the community and are built by formal companies."
+          },
+          {
+            "url": "https://linear.app/developers/agents",
+            "quote": "Because this will be installed with a workspace scope admin permissions are required to complete the installation."
+          }
+        ],
+        "note": "No review step is described in Linear's OAuth docs; 'no review' is inferred from that absence."
+      }
+    },
+    {
+      "text": "Token lifetimes: for classic Linear OAuth apps, access tokens last about 24 hours and refresh tokens rotate, with a 30-minute replay grace period; all apps were moved to this system on April 1, 2026. Linear does not document lifetimes for tokens issued by mcp.linear.app, which advertises the refresh_token grant.",
+      "evidence": {
+        "level": "sourced",
+        "sources": [
+          {
+            "url": "https://linear.app/developers/oauth-2-0-authentication",
+            "quote": "All OAuth2 applications were migrated to the new refresh token system on April 1, 2026."
+          },
+          {
+            "url": "https://linear.app/developers/oauth-2-0-authentication",
+            "quote": "Requests to consume a refresh token and obtain a new one have a 30-minute grace period to allow for network errors."
+          }
+        ],
+        "note": "The 24-hour figure comes from the documented example response (\"expires_in\": 86399). MCP-issued token lifetimes are uncertain."
+      }
+    },
+    {
+      "text": "Rate limits: Linear's GraphQL API allows 5,000 requests per hour per user for OAuth apps (2,500 for API keys). It is not documented whether MCP tool calls count against the same quota.",
+      "evidence": {
+        "level": "sourced",
+        "sources": [
+          {
+            "url": "https://linear.app/developers/rate-limiting",
+            "quote": "OAuth App | 5,000 | User (or App User) | 1 hour"
+          }
+        ],
+        "note": "Whether the MCP quota matches is uncertain."
+      }
+    },
+    {
+      "text": "Disconnecting in Composio may not revoke the Linear grant. Composio says DCR OAuth grants usually aren't revoked on the server side; Linear serves token revocation from the same URL as the token endpoint, https://mcp.linear.app/token (its revocation_endpoint), and users can also remove access in Linear.",
+      "evidence": {
+        "level": "sourced",
+        "sources": [
+          {
+            "url": "https://docs.composio.dev/docs/extending-sessions/custom-mcp",
+            "quote": "DCR OAuth grants and API keys usually aren't revoked on the server's side, so revoke them there if you need to."
+          },
+          {
+            "url": "#probe-1",
+            "title": "OAuth authorization server metadata"
+          }
+        ],
+        "note": "The Composio statement is from the Custom MCP page; that it applies to the built-in LINEAR_MCP toolkit is assumed."
+      }
+    },
+    {
+      "text": "Linear's authorization server also supports the JWT-bearer grant with the ID-JAG profile (enterprise-managed authorization). That is how Okta and Claude-issued auto-connect skip the consent screen; it needs admin setup on both sides and is not a Composio flow today.",
+      "evidence": {
+        "level": "uncertain",
+        "sources": [
+          {
+            "url": "#probe-1",
+            "title": "OAuth authorization server metadata"
+          },
+          {
+            "url": "https://linear.app/docs/mcp",
+            "quote": "Claude auto-connect lets members with matching Linear accounts on Business or Enterprise plans connect automatically, without a separate sign-in or consent screen."
+          }
+        ],
+        "note": "Linking the ID-JAG metadata to the Okta and Claude features is our inference."
+      }
+    }
+  ],
+  "agentVsYou": {
+    "agentCan": [
+      "Run the discovery probes (WWW-Authenticate → protected-resource metadata → authorization-server metadata) with plain GETs.",
+      "Register an OAuth client via POST https://mcp.linear.app/register (RFC 7591) with Composio's redirect URI — no portal, account or human needed (not executed in this research).",
+      "Alternatively host a Client ID Metadata Document and use its URL as client_id (not usable through Composio's DCR-only Custom MCP path).",
+      "Check via the Composio API (with your API key) whether the LINEAR_MCP auth config needs credentials, and create the auth config programmatically.",
+      "Generate connect links, run smoke-test tool calls after consent, and draft the approval request for a customer's workspace admin."
+    ],
+    "youMust": [
+      "Choose between Linear MCP and the Composio-managed Linear toolkit.",
+      "Hold and store any DCR-issued client secret safely (it is a credential).",
+      "Have a real Linear user sign in and approve the consent screen for each workspace connection.",
+      "Get a workspace admin's approval where a workspace requires third-party app approval (paid plans).",
+      "For enterprise-managed auth (Okta), have the customer's admin configure it; this is optional."
+    ]
+  },
+  "composioSetup": {
+    "redirectUri": "https://backend.composio.dev/api/v3/toolkits/auth/callback",
+    "steps": [
+      "Dashboard → Auth Configs → Create Auth Config → Linear MCP (LINEAR_MCP) → the toolkit's OAuth scheme (DCR_OAUTH).",
+      "If no Client ID/Secret fields are shown, save; Composio performs the registration.",
+      "If Client ID/Secret fields are shown: Use your own developer credentials → paste the client_id and client_secret returned by POST https://mcp.linear.app/register, registered with redirect_uris exactly [\"https://backend.composio.dev/api/v3/toolkits/auth/callback\"].",
+      "Connect a test user through the connect link and approve Linear's consent screen."
+    ],
+    "notes": "Linear's MCP server supports scopes read, write, openid and email (protected-resource metadata lists read and write). Requesting only read gives read-only tokens. The older Composio redirect URI https://backend.composio.dev/api/v1/auth-apps/add is still supported, but whichever you register must match exactly. Unverified: which fields the LINEAR_MCP auth config form shows, and which redirect URI Composio uses when it performs DCR itself."
+  },
+  "probes": [
+    {
+      "name": "OAuth authorization server metadata",
+      "request": "GET https://mcp.linear.app/.well-known/oauth-authorization-server",
+      "result": "200 — issuer https://mcp.linear.app; registration_endpoint https://mcp.linear.app/register; scopes read, write, openid, email; grant types authorization_code, refresh_token, urn:ietf:params:oauth:grant-type:jwt-bearer (profile id-jag); token auth methods client_secret_basic, client_secret_post, none; PKCE S256 only; client_id_metadata_document_supported true; revocation_endpoint https://mcp.linear.app/token",
+      "status": "pass",
+      "checkedAt": "2026-11-05"
+    },
+    {
+      "name": "OpenID configuration",
+      "request": "GET https://mcp.linear.app/.well-known/openid-configuration",
+      "result": "200 — same endpoints plus jwks_uri https://mcp.linear.app/.well-known/jwks.json (RS256, kid mcp-prod-1), claims sub, iss, aud, exp, iat, email, email_verified",
+      "status": "info",
+      "checkedAt": "2026-11-05"
+    },
+    {
+      "name": "Protected resource metadata (/mcp)",
+      "request": "GET https://mcp.linear.app/.well-known/oauth-protected-resource/mcp",
+      "result": "200 — resource https://mcp.linear.app/mcp; authorization_servers [https://mcp.linear.app]; scopes_supported [read, write]; bearer_methods_supported [header]",
+      "status": "pass",
+      "checkedAt": "2026-11-05"
+    },
+    {
+      "name": "Protected resource metadata (/mcp/readonly)",
+      "request": "GET https://mcp.linear.app/.well-known/oauth-protected-resource/mcp/readonly",
+      "result": "200 — resource https://mcp.linear.app/mcp/readonly; scopes_supported [read]",
+      "status": "info",
+      "checkedAt": "2026-11-05"
+    },
+    {
+      "name": "MCP endpoint without a token",
+      "request": "GET https://mcp.linear.app/mcp",
+      "result": "401 — WWW-Authenticate: Bearer realm=\"OAuth\", resource_metadata=\"https://mcp.linear.app/.well-known/oauth-protected-resource/mcp\", scope=\"read write\"",
+      "status": "pass",
+      "checkedAt": "2026-11-05"
+    },
+    {
+      "name": "Legacy SSE endpoint without a token",
+      "request": "GET https://mcp.linear.app/sse (with and without Accept: text/event-stream)",
+      "result": "404 — body '404 Not Found'",
+      "status": "fail",
+      "checkedAt": "2026-11-05"
+    },
+    {
+      "name": "Authorize with an unregistered client_id",
+      "request": "GET https://mcp.linear.app/authorize?client_id=invalid&response_type=code&redirect_uri=https://backend.composio.dev/api/v3/toolkits/auth/callback",
+      "result": "400 — plain text 'Invalid client_id' (rejected before any login page)",
+      "status": "info",
+      "checkedAt": "2026-11-05"
+    },
+    {
+      "name": "Authorize with a CIMD-style URL client_id",
+      "request": "GET https://mcp.linear.app/authorize?client_id=https%3A%2F%2Fexample.com%2Fclient-metadata.json&response_type=code&redirect_uri=https://backend.composio.dev/api/v3/toolkits/auth/callback&code_challenge=…&code_challenge_method=S256",
+      "result": "400 — 'CIMD fetch failed for https://example.com/client-metadata.json: Failed to fetch client metadata: HTTP 404' (Linear does fetch URL client_ids)",
+      "status": "info",
+      "checkedAt": "2026-11-05"
+    },
+    {
+      "name": "Composio toolkit metadata without an API key",
+      "request": "GET https://backend.composio.dev/api/v3.1/toolkits/linear_mcp",
+      "result": "401 — Auth_NoAuthProvided; an API key is needed to read composio_managed_auth_schemes",
+      "status": "info",
+      "checkedAt": "2026-11-05"
+    },
+    {
+      "name": "Dynamic Client Registration with Composio's redirect URI",
+      "request": "POST https://mcp.linear.app/register (not sent — read-only research run)",
+      "result": "Not attempted; pending user approval",
+      "status": "info",
+      "checkedAt": "2026-11-05"
+    },
+    {
+      "name": "Real Dynamic Client Registration with Composio's redirect URI",
+      "request": "POST https://mcp.linear.app/register {\"client_name\":\"OAuth Runway setup test (Composio redirect)\",\"redirect_uris\":[\"https://backend.composio.dev/api/v3/toolkits/auth/callback\"],\"grant_types\":[\"authorization_code\",\"refresh_token\"],\"response_types\":[\"code\"],\"token_endpoint_auth_method\":\"client_secret_post\"}",
+      "result": "201 Created in 0.6s. Linear issued a client_id (16 characters) and a client_secret (32 characters), echoed Composio's redirect URI as registered, and set client_secret_expires_at, so the secret expires. No account, form or review was involved. The credential values were not recorded.",
+      "status": "pass",
+      "checkedAt": "2026-11-11"
+    },
+    {
+      "name": "Authorize with the newly registered client",
+      "request": "GET https://mcp.linear.app/authorize?response_type=code&client_id=<new client>&redirect_uri=https://backend.composio.dev/api/v3/toolkits/auth/callback&code_challenge=<S256>&code_challenge_method=S256",
+      "result": "200: Linear serves its sign-in/consent page, so it accepts the new client together with Composio's redirect URI. We stopped here and did not sign in.",
+      "status": "pass",
+      "checkedAt": "2026-11-11"
+    },
+    {
+      "name": "Same client, different redirect URI",
+      "request": "GET https://mcp.linear.app/authorize?…&client_id=<new client>&redirect_uri=https://evil.example.org/cb",
+      "result": "400 \"Invalid redirect URI\". Linear enforces the registered redirect exactly, so it must match the Composio auth config character for character.",
+      "status": "pass",
+      "checkedAt": "2026-11-11"
+    }
+  ],
+  "corrections": [
+    {
+      "claim": "Our first draft could only say the registration endpoint exists. Whether Linear would accept Composio's redirect URI was unverified.",
+      "finding": "Tested on 2026-11-11: a real registration with Composio's redirect URI returned 201 in 0.6s, the authorize step accepted it, and a different redirect URI was rejected with 400.",
+      "source": "#probe-11"
+    },
+    {
+      "claim": "Composio's managed-auth directory lists Linear MCP under 'Bring your own OAuth app', which suggests you must register an app in Linear's developer portal and paste a Client ID and Secret.",
+      "finding": "There is no portal app for Linear MCP. The toolkit's auth scheme is DCR_OAUTH, Linear's MCP server registers clients by API, and Composio's Custom MCP docs show Composio performing DCR itself. Whether the built-in LINEAR_MCP auth config still asks for credentials is unconfirmed (see open questions).",
+      "source": "https://docs.composio.dev/toolkits/linear_mcp"
+    },
+    {
+      "claim": "Older setup guides connect to Linear's MCP server at https://mcp.linear.app/sse.",
+      "finding": "Linear's docs call /sse a deprecated fallback and say all new setups should use https://mcp.linear.app/mcp; an unauthenticated GET to /sse returned 404 on 2026-11-05.",
+      "source": "https://linear.app/docs/mcp"
+    },
+    {
+      "claim": "MCP clients are expected to use Dynamic Client Registration.",
+      "finding": "The 2025-11-25 MCP authorization spec makes CIMD a SHOULD and DCR a MAY kept for backwards compatibility. Linear supports both; Composio's Custom MCP path supports DCR only.",
+      "source": "https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization"
+    },
+    {
+      "claim": "Linear OAuth access tokens are long-lived and do not need refreshing.",
+      "finding": "All Linear OAuth2 apps moved to rotating refresh tokens on April 1, 2026; the documented token response shows expires_in 86399 (about 24 hours).",
+      "source": "https://linear.app/developers/oauth-2-0-authentication"
+    },
+    {
+      "claim": "A Linear OAuth app must be reviewed or listed by Linear before other workspaces can use it.",
+      "finding": "No review step is documented. Setting distribution to public makes an app installable by other workspaces; only the optional Integration Directory listing is curated by Linear.",
+      "source": "https://linear.app/developers/oauth-app-manifests"
+    }
+  ],
+  "openQuestions": [
+    "How long does a client_secret from mcp.linear.app/register stay valid, and what happens to connected users when it expires? Inspect client_secret_expires_at on a registration you keep.",
+    "Does Composio perform DCR itself for the built-in LINEAR_MCP toolkit, or does the auth config form ask for a Client ID/Secret? Find out by opening Auth Configs → Create Auth Config → Linear MCP in the dashboard, or GET https://backend.composio.dev/api/v3.1/toolkits/linear_mcp with an API key and read composio_managed_auth_schemes and the auth config fields.",
+    "When Composio performs DCR, which redirect URI does it register (v3 toolkits callback or another), and is one client registered per auth config or per connection?",
+    "Do DCR-registered MCP clients go through Linear's third-party application approvals in workspaces that enable them? Test in a paid workspace with approvals turned on.",
+    "What are the access and refresh token lifetimes for tokens issued by mcp.linear.app, and does Linear expire unused DCR clients? Inspect expires_in on a real token exchange.",
+    "Do MCP tool calls count against Linear's 5,000 requests/hour OAuth quota? Check X-RateLimit headers or ask Linear support.",
+    "Does Linear's MCP consent screen show the DCR client_name, and does it mark dynamically registered clients as unverified?"
+  ],
+  "sources": [
+    {
+      "url": "https://linear.app/docs/mcp",
+      "title": "Linear Docs — MCP server",
+      "type": "official"
+    },
+    {
+      "url": "https://linear.app/docs/third-party-application-approvals",
+      "title": "Linear Docs — Third-Party App Approvals",
+      "type": "official"
+    },
+    {
+      "url": "https://linear.app/developers/oauth-2-0-authentication",
+      "title": "Linear Developers — OAuth 2.0 authentication",
+      "type": "official"
+    },
+    {
+      "url": "https://linear.app/developers/oauth-app-manifests",
+      "title": "Linear Developers — OAuth application manifests",
+      "type": "official"
+    },
+    {
+      "url": "https://linear.app/developers/oauth-actor-authorization",
+      "title": "Linear Developers — OAuth actor authorization",
+      "type": "official"
+    },
+    {
+      "url": "https://linear.app/developers/agents",
+      "title": "Linear Developers — Agents: Getting Started",
+      "type": "official"
+    },
+    {
+      "url": "https://linear.app/developers/integration-directory",
+      "title": "Linear Developers — Integration Directory",
+      "type": "official"
+    },
+    {
+      "url": "https://linear.app/developers/rate-limiting",
+      "title": "Linear Developers — Rate limiting",
+      "type": "official"
+    },
+    {
+      "url": "https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization",
+      "title": "MCP Specification 2025-11-25 — Authorization",
+      "type": "official"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc7591",
+      "title": "RFC 7591 — OAuth 2.0 Dynamic Client Registration Protocol",
+      "type": "official"
+    },
+    {
+      "url": "https://docs.composio.dev/toolkits/linear_mcp",
+      "title": "Composio — Linear MCP toolkit",
+      "type": "official"
+    },
+    {
+      "url": "https://docs.composio.dev/toolkits/linear",
+      "title": "Composio — Linear toolkit",
+      "type": "official"
+    },
+    {
+      "url": "https://docs.composio.dev/toolkits/managed-auth",
+      "title": "Composio — Managed OAuth apps",
+      "type": "official"
+    },
+    {
+      "url": "https://docs.composio.dev/docs/extending-sessions/custom-mcp",
+      "title": "Composio — Custom MCP",
+      "type": "official"
+    },
+    {
+      "url": "https://docs.composio.dev/docs/authentication/custom-app-vs-managed-app",
+      "title": "Composio — Managed vs custom auth",
+      "type": "official"
+    },
+    {
+      "url": "https://mcp.linear.app/.well-known/oauth-authorization-server",
+      "title": "Linear MCP — OAuth authorization server metadata",
+      "type": "probe"
+    },
+    {
+      "url": "https://mcp.linear.app/.well-known/oauth-protected-resource/mcp",
+      "title": "Linear MCP — Protected resource metadata",
+      "type": "probe"
+    },
+    {
+      "url": "https://mcp.linear.app/mcp",
+      "title": "Linear MCP — Streamable HTTP endpoint (401 probe)",
+      "type": "probe"
+    }
+  ]
+}
