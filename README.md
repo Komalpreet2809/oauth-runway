@@ -7,7 +7,7 @@ OAuth Runway gives developers clear, evidence-backed guides for setting up a pro
 - a **library** of in-depth guides chosen to cover different setup paths, and
 - a **live research agent**: enter any app name or website and it reads the provider's docs, probes their OAuth endpoints, writes a shareable guide, and checks every quote against its source.
 
-**Live demo:** https://oauth-runway-woad.vercel.app · **How it works:** https://oauth-runway-woad.vercel.app/method
+**Live demo:** https://oauth-runway-woad.vercel.app · **How it works:** https://oauth-runway-woad.vercel.app/method · **Source:** https://github.com/Komalpreet2809/oauth-runway
 
 ---
 
